@@ -1,0 +1,8 @@
+<?php
+namespace App\Models;
+use Illuminate\Database\Eloquent\Model;
+class Testimonial extends Model {
+    protected $fillable = ['name','country','rating','content','is_active'];
+    protected $casts = ['is_active' => 'boolean'];
+    public function scopeActive($q) { return $q->where('is_active', true); }
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ $subject }}</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f6f8; color: #1a1a1a; }
+        .wrapper { max-width: 620px; margin: 32px auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+        .header { background: #071510; padding: 32px 40px; }
+        .header-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+        .logo-circle { width: 42px; height: 42px; background: #d4a853; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .logo-text h1 { color: #ffffff; font-size: 18px; font-weight: 700; line-height: 1; }
+        .logo-text p { color: #d4a853; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; margin-top: 3px; }
+        .badge { display: inline-block; padding: 5px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+        .badge-contact  { background: #1e4d8c22; color: #5ba4f5; border: 1px solid #5ba4f544; }
+        .badge-activity { background: #d4a85322; color: #d4a853; border: 1px solid #d4a85344; }
+        .badge-package  { background: #2d6a4f22; color: #52b788; border: 1px solid #52b78844; }
+        .header-title { color: #ffffff; font-size: 22px; font-weight: 700; margin-top: 10px; }
+        .body { padding: 36px 40px; }
+        .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #999; margin-bottom: 8px; }
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 28px; }
+        .info-block { background: #f8f9fb; border-radius: 8px; padding: 14px 16px; }
+        .info-block .label { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #aaa; margin-bottom: 4px; }
+        .info-block .value { font-size: 14px; font-weight: 600; color: #1a1a1a; word-break: break-word; }
+        .info-block .value a { color: #d4a853; text-decoration: none; }
+        .message-block { background: #f8f9fb; border-radius: 8px; padding: 20px; margin-bottom: 28px; }
+        .message-block pre { font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.7; color: #333; white-space: pre-wrap; word-break: break-word; }
+        .cta-block { text-align: center; margin-bottom: 28px; }
+        .cta-btn { display: inline-block; background: #d4a853; color: #071510; font-weight: 700; font-size: 14px; padding: 13px 32px; border-radius: 8px; text-decoration: none; }
+        .divider { border: none; border-top: 1px solid #eee; margin: 24px 0; }
+        .footer { background: #f8f9fb; padding: 24px 40px; text-align: center; }
+        .footer p { font-size: 12px; color: #aaa; line-height: 1.6; }
+        .footer strong { color: #888; }
+        @media (max-width: 480px) {
+            .body { padding: 24px 20px; }
+            .header { padding: 24px 20px; }
+            .info-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <!-- Header -->
+    <div class="header">
+        <div class="header-logo">
+            <div class="logo-circle">
+                <svg width="22" height="22" viewBox="0 0 40 40" fill="none">
+                    <path d="M20 9 L6 29 L34 29 Z" fill="#071510"/>
+                    <path d="M15 29 L15 23 Q20 17 25 23 L25 29 Z" fill="#d4a853"/>
+                    <line x1="5" y1="31" x2="35" y2="31" stroke="#071510" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+                    <circle cx="30" cy="13" r="1.3" fill="#071510" opacity="0.65"/>
+                </svg>
+            </div>
+            <div class="logo-text">
+                <h1>Jipe Farm Campsite</h1>
+                <p>Campsite · Tanzania</p>
+            </div>
+        </div>
+        <span class="badge badge-{{ $type }}">
+            @if($type === 'contact') New Contact Message
+            @elseif($type === 'activity') Activity Booking
+            @else Package Booking
+            @endif
+        </span>
+        <div class="header-title">{{ $subject }}</div>
+    </div>
+
+    <!-- Body -->
+    <div class="body">
+        <div class="section-label">Sender Details</div>
+        <div class="info-grid">
+            <div class="info-block">
+                <div class="label">Full Name</div>
+                <div class="value">{{ $senderName }}</div>
+            </div>
+            <div class="info-block">
+                <div class="label">Email</div>
+                <div class="value"><a href="mailto:{{ $senderEmail }}">{{ $senderEmail }}</a></div>
+            </div>
+            @if($senderPhone)
+            <div class="info-block">
+                <div class="label">Phone</div>
+                <div class="value">{{ $senderPhone }}</div>
+            </div>
+            @endif
+            <div class="info-block">
+                <div class="label">Received At</div>
+                <div class="value">{{ now()->format('D, d M Y · H:i') }} EAT</div>
+            </div>
+        </div>
+
+        <div class="section-label">Message</div>
+        <div class="message-block">
+            <pre>{{ $body }}</pre>
+        </div>
+
+        <div class="cta-block">
+            <a href="{{ config('app.url') }}/admin/messages" class="cta-btn">
+                View in Admin Dashboard →
+            </a>
+        </div>
+
+        <hr class="divider">
+        <p style="font-size:13px; color:#888; text-align:center;">
+            Reply directly to the sender at <strong>{{ $senderEmail }}</strong>
+        </p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>
+            <strong>Jipe Farm Campsite</strong><br>
+             Kilimanjaro Region, Tanzania<br>
+            This is an automated notification from your website.
+        </p>
+    </div>
+</div>
+</body>
+</html>

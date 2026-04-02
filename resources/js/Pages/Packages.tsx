@@ -1,0 +1,84 @@
+import { Head, Link } from '@inertiajs/react';
+import { PageProps, Package } from '@/types';
+import PublicLayout from '@/Layouts/PublicLayout';
+
+export default function Packages({ packages }: PageProps<{ packages: Package[] }>) {
+    return (
+        <PublicLayout>
+            <Head title="Tour Packages — Jipe Farm Campsite" />
+            <div className="relative h-72 lg:h-screen flex items-end overflow-hidden">
+                <img src="/Images/Tent.jpg" alt="About" className="absolute inset-0 w-full h-full object-cover"/>
+                <div className="absolute inset-0 bg-gradient-to-b from-[#071510]/20 via-[#071510]/40 to-[#071510]" />
+                <div className="relative z-10 max-w-7xl mx-auto px-5 lg:px-8 pb-14 w-full">
+                    <p className="text-[#d4a853] text-xs font-semibold tracking-[0.25em] uppercase mb-3">Curated Experiences</p>
+                    <h1 className="text-4xl sm:text-6xl font-bold text-white">Tour Packages</h1>
+                </div>
+            </div>
+
+            <section className="bg-[#071510] py-20">
+                <div className="max-w-7xl mx-auto px-5 lg:px-8 space-y-10">
+                    {packages.map((pkg, i) => (
+                        <div
+                            key={pkg.id}
+                            className={`flex flex-col lg:flex-row rounded-2xl overflow-hidden border ${pkg.is_featured ? 'border-[#d4a853]/50 shadow-2xl shadow-[#d4a853]/5' : 'border-white/8'} ${i % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
+                        >
+                            {/* Image */}
+                            <div className="lg:w-2/5 relative h-64 lg:h-auto overflow-hidden">
+                                {pkg.image_url && (
+                                    <img src={pkg.image_url} alt={pkg.name} className="w-full h-full object-cover" />
+                                )}
+                                <div className={`absolute inset-0 ${i % 2 === 1 ? 'bg-gradient-to-l' : 'bg-gradient-to-r'} from-transparent to-[#0d1f13]/80 hidden lg:block`} />
+                                {pkg.badge && (
+                                    <span className={`absolute top-5 left-5 text-[10px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full ${pkg.is_featured ? 'bg-[#d4a853] text-[#071510]' : 'bg-white/15 text-white'}`}>
+                                        {pkg.badge}
+                                    </span>
+                                )}
+                            </div>
+                            {/* Content */}
+                            <div className="bg-[#0d1f13] lg:w-3/5 p-8 flex flex-col">
+                                <div className="flex items-start justify-between flex-wrap gap-4 mb-4">
+                                    <div>
+                                        {pkg.tagline && <p className="text-[#d4a853] text-xs font-semibold tracking-widest uppercase mb-1">{pkg.tagline}</p>}
+                                        <h2 className="text-white font-bold text-2xl">{pkg.name}</h2>
+                                        <p className="text-white/40 text-sm mt-1">{pkg.duration}</p>
+                                    </div>
+                                    <div className="text-right">
+                                        <p className="text-[#d4a853] font-bold text-3xl">{pkg.price}</p>
+                                        <p className="text-white/40 text-xs">{pkg.price_note ?? 'per person'}</p>
+                                    </div>
+                                </div>
+                                <p className="text-white/60 leading-relaxed mb-5 text-sm line-clamp-3">{pkg.description}</p>
+                                {/* Top features preview */}
+                                <div className="grid sm:grid-cols-2 gap-2 mb-7 flex-1">
+                                    {pkg.features.slice(0, 6).map((f) => (
+                                        <div key={f} className="flex items-start gap-2.5 text-white/70 text-sm">
+                                            <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 mt-0.5 text-[#d4a853] shrink-0">
+                                                <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+                                            </svg>
+                                            {f}
+                                        </div>
+                                    ))}
+                                    {pkg.features.length > 6 && (
+                                        <p className="text-white/30 text-xs col-span-2">+{pkg.features.length - 6} more inclusions</p>
+                                    )}
+                                </div>
+                                {/* Actions */}
+                                <div className="flex flex-wrap gap-3">
+                                    <Link
+                                        href={`/packages/${pkg.id}`}
+                                        className={`font-bold text-sm px-8 py-3 rounded-full transition-all ${pkg.is_featured ? 'bg-[#d4a853] hover:bg-[#c49640] text-[#071510]' : 'border border-white/20 hover:border-[#d4a853] text-white hover:text-[#d4a853]'}`}
+                                    >
+                                        View Full Details
+                                    </Link>
+                                    <Link href="/contact" className="font-medium text-sm px-6 py-3 rounded-full text-white/50 hover:text-white transition-colors">
+                                        Enquire →
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </section>
+        </PublicLayout>
+    );
+}
