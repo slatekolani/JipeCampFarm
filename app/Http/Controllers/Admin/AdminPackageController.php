@@ -3,7 +3,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Package;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class AdminPackageController extends Controller
@@ -38,7 +37,9 @@ class AdminPackageController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $data['image_url'] = '/storage/' . $request->file('image')->store('packages', 'public');
+            $filename = $request->file('image')->hashName();
+            $request->file('image')->move(public_path('images/packages'), $filename);
+            $data['image_url'] = '/images/packages/' . $filename;
         }
         unset($data['image']);
 
@@ -71,10 +72,13 @@ class AdminPackageController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            if ($package->image_url && str_starts_with($package->image_url, '/storage/')) {
-                Storage::disk('public')->delete(substr($package->image_url, 9));
+            if ($package->image_url && str_starts_with($package->image_url, '/images/')) {
+                $old = public_path($package->image_url);
+                if (file_exists($old)) unlink($old);
             }
-            $data['image_url'] = '/storage/' . $request->file('image')->store('packages', 'public');
+            $filename = $request->file('image')->hashName();
+            $request->file('image')->move(public_path('images/packages'), $filename);
+            $data['image_url'] = '/images/packages/' . $filename;
         }
         unset($data['image']);
 
@@ -84,8 +88,9 @@ class AdminPackageController extends Controller
 
     public function destroy(Package $package)
     {
-        if ($package->image_url && str_starts_with($package->image_url, '/storage/')) {
-            Storage::disk('public')->delete(substr($package->image_url, 9));
+        if ($package->image_url && str_starts_with($package->image_url, '/images/')) {
+            $old = public_path($package->image_url);
+            if (file_exists($old)) unlink($old);
         }
         $package->delete();
         return back()->with('success', 'Package deleted.');

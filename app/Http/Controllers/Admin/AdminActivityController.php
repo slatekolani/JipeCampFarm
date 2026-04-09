@@ -3,7 +3,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Activity;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class AdminActivityController extends Controller
@@ -36,7 +35,9 @@ class AdminActivityController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $data['image_url'] = '/storage/' . $request->file('image')->store('activities', 'public');
+            $filename = $request->file('image')->hashName();
+            $request->file('image')->move(public_path('images/activities'), $filename);
+            $data['image_url'] = '/images/activities/' . $filename;
         }
         unset($data['image']);
 
@@ -67,10 +68,13 @@ class AdminActivityController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            if ($activity->image_url && str_starts_with($activity->image_url, '/storage/')) {
-                Storage::disk('public')->delete(substr($activity->image_url, 9));
+            if ($activity->image_url && str_starts_with($activity->image_url, '/images/')) {
+                $old = public_path($activity->image_url);
+                if (file_exists($old)) unlink($old);
             }
-            $data['image_url'] = '/storage/' . $request->file('image')->store('activities', 'public');
+            $filename = $request->file('image')->hashName();
+            $request->file('image')->move(public_path('images/activities'), $filename);
+            $data['image_url'] = '/images/activities/' . $filename;
         }
         unset($data['image']);
 
@@ -80,8 +84,9 @@ class AdminActivityController extends Controller
 
     public function destroy(Activity $activity)
     {
-        if ($activity->image_url && str_starts_with($activity->image_url, '/storage/')) {
-            Storage::disk('public')->delete(substr($activity->image_url, 9));
+        if ($activity->image_url && str_starts_with($activity->image_url, '/images/')) {
+            $old = public_path($activity->image_url);
+            if (file_exists($old)) unlink($old);
         }
         $activity->delete();
         return back()->with('success', 'Activity deleted.');

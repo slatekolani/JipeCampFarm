@@ -3,7 +3,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\HeroSlide;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class HeroSlideController extends Controller
@@ -33,7 +32,9 @@ class HeroSlideController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $data['image_url'] = '/storage/' . $request->file('image')->store('hero', 'public');
+            $filename = $request->file('image')->hashName();
+            $request->file('image')->move(public_path('images/hero'), $filename);
+            $data['image_url'] = '/images/hero/' . $filename;
         }
         unset($data['image']);
 
@@ -61,11 +62,13 @@ class HeroSlideController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            // Delete old uploaded file if it exists
-            if ($hero->image_url && str_starts_with($hero->image_url, '/storage/')) {
-                Storage::disk('public')->delete(substr($hero->image_url, 9));
+            if ($hero->image_url && str_starts_with($hero->image_url, '/images/')) {
+                $old = public_path($hero->image_url);
+                if (file_exists($old)) unlink($old);
             }
-            $data['image_url'] = '/storage/' . $request->file('image')->store('hero', 'public');
+            $filename = $request->file('image')->hashName();
+            $request->file('image')->move(public_path('images/hero'), $filename);
+            $data['image_url'] = '/images/hero/' . $filename;
         }
         unset($data['image']);
 
@@ -75,8 +78,9 @@ class HeroSlideController extends Controller
 
     public function destroy(HeroSlide $hero)
     {
-        if ($hero->image_url && str_starts_with($hero->image_url, '/storage/')) {
-            Storage::disk('public')->delete(substr($hero->image_url, 9));
+        if ($hero->image_url && str_starts_with($hero->image_url, '/images/')) {
+            $old = public_path($hero->image_url);
+            if (file_exists($old)) unlink($old);
         }
         $hero->delete();
         return back()->with('success', 'Slide deleted.');

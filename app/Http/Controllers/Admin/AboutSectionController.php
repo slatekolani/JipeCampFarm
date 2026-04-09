@@ -3,7 +3,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\AboutSection;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class AboutSectionController extends Controller
@@ -33,10 +32,13 @@ class AboutSectionController extends Controller
 
         if ($request->hasFile('image')) {
             $existing = AboutSection::find(1);
-            if ($existing && $existing->image_url && str_starts_with($existing->image_url, '/storage/')) {
-                Storage::disk('public')->delete(substr($existing->image_url, 9));
+            if ($existing && $existing->image_url && str_starts_with($existing->image_url, '/images/')) {
+                $old = public_path($existing->image_url);
+                if (file_exists($old)) unlink($old);
             }
-            $data['image_url'] = '/storage/' . $request->file('image')->store('about', 'public');
+            $filename = $request->file('image')->hashName();
+            $request->file('image')->move(public_path('images/about'), $filename);
+            $data['image_url'] = '/images/about/' . $filename;
         }
         unset($data['image']);
 

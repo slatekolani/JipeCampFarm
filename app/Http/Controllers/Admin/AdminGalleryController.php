@@ -3,7 +3,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\GalleryImage;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class AdminGalleryController extends Controller
@@ -31,7 +30,9 @@ class AdminGalleryController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $data['image_url'] = '/storage/' . $request->file('image')->store('gallery', 'public');
+            $filename = $request->file('image')->hashName();
+            $request->file('image')->move(public_path('images/gallery'), $filename);
+            $data['image_url'] = '/images/gallery/' . $filename;
         }
         unset($data['image']);
 
@@ -57,10 +58,13 @@ class AdminGalleryController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            if ($gallery->image_url && str_starts_with($gallery->image_url, '/storage/')) {
-                Storage::disk('public')->delete(substr($gallery->image_url, 9));
+            if ($gallery->image_url && str_starts_with($gallery->image_url, '/images/')) {
+                $old = public_path($gallery->image_url);
+                if (file_exists($old)) unlink($old);
             }
-            $data['image_url'] = '/storage/' . $request->file('image')->store('gallery', 'public');
+            $filename = $request->file('image')->hashName();
+            $request->file('image')->move(public_path('images/gallery'), $filename);
+            $data['image_url'] = '/images/gallery/' . $filename;
         }
         unset($data['image']);
 
@@ -70,8 +74,9 @@ class AdminGalleryController extends Controller
 
     public function destroy(GalleryImage $gallery)
     {
-        if ($gallery->image_url && str_starts_with($gallery->image_url, '/storage/')) {
-            Storage::disk('public')->delete(substr($gallery->image_url, 9));
+        if ($gallery->image_url && str_starts_with($gallery->image_url, '/images/')) {
+            $old = public_path($gallery->image_url);
+            if (file_exists($old)) unlink($old);
         }
         $gallery->delete();
         return back()->with('success', 'Image deleted.');
