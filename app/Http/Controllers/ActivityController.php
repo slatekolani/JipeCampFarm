@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\EnquiryReceived;
+use App\Mail\GuestConfirmation;
 use App\Models\Activity;
 use App\Models\ContactMessage;
 use Illuminate\Http\Request;
@@ -70,7 +71,21 @@ class ActivityController extends Controller
             Mail::to(config('mail.notify_to', config('mail.from.address')))
                 ->send(new EnquiryReceived('activity', $data['name'], $data['email'], $data['phone'] ?? null, $subject, $messageBody));
         } catch (\Throwable) {
-            // Message saved to DB — email failure is non-fatal
+            // Non-fatal — booking saved to DB
+        }
+
+        // Confirmation to the guest
+        try {
+            Mail::to($data['email'])
+                ->send(new GuestConfirmation(
+                    'activity',
+                    $data['name'],
+                    $data['email'],
+                    $activity->title,
+                    $messageBody
+                ));
+        } catch (\Throwable) {
+            // Non-fatal
         }
 
         return back()->with('booking_success', true);

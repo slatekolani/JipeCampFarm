@@ -87,7 +87,7 @@ export default function PackageForm({ package: pkg }: PageProps<{ package: Packa
                     <div className="grid grid-cols-3 gap-4">
                         <div>
                             <label className="block text-white/50 text-xs uppercase tracking-wider mb-1.5">Price *</label>
-                            <input type="text" value={data.price} onChange={e => setData('price', e.target.value)} required className={inputCls} placeholder="$299" />
+                            <input type="text" value={data.price} onChange={e => setData('price', e.target.value)} required className={inputCls} placeholder="TZS 780,000" />
                         </div>
                         <div>
                             <label className="block text-white/50 text-xs uppercase tracking-wider mb-1.5">Price Note</label>

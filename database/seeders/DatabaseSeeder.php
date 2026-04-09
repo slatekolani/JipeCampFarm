@@ -14,12 +14,21 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        // ── Admin user ────────────────────────────────────────────────────
+        // ── Admin users ───────────────────────────────────────────────────
         User::updateOrCreate(
             ['email' => 'adminjipe@jipecamp.com'],
             [
                 'name'              => 'Jipe Admin',
                 'password'          => Hash::make('JipeJipe@321'),
+                'email_verified_at' => now(),
+            ]
+        );
+
+        User::updateOrCreate(
+            ['email' => 'info@jipefarmcampsite.com'],
+            [
+                'name'              => 'Jipe Farm Info',
+                'password'          => Hash::make('%^$&#*@(!)'),
                 'email_verified_at' => now(),
             ]
         );
@@ -174,7 +183,7 @@ class DatabaseSeeder extends Seeder
                 'name'        => 'Lake Explorer',
                 'tagline'     => 'The Essential Jipe Experience',
                 'description' => 'Perfect for first-time visitors, this package delivers the core Lake Jipe experience — a dawn canoe safari, a guided bush walk, a cultural evening, and two nights sleeping to the sounds of the African wild.',
-                'price'       => '$299',
+                'price'       => 'TZS 780,000',
                 'price_note'  => 'per person',
                 'duration'    => '2 Nights / 3 Days',
                 'image_url'   => 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=700&q=85',
@@ -188,7 +197,7 @@ class DatabaseSeeder extends Seeder
                 'name'        => 'Wilderness Immersion',
                 'tagline'     => 'Go Deeper into the Wild',
                 'description' => 'Our signature 4-night package for travellers who want to truly disconnect. Multiple canoe safaris, a full-day mountain hike, birding expedition, cultural immersion, and a private bush barbecue under the stars.',
-                'price'       => '$549',
+                'price'       => 'TZS 1,430,000',
                 'price_note'  => 'per person',
                 'duration'    => '4 Nights / 5 Days',
                 'image_url'   => 'https://images.unsplash.com/photo-1561501900-3701fa6a0864?w=700&q=85',
@@ -202,7 +211,7 @@ class DatabaseSeeder extends Seeder
                 'name'        => 'Jipe Luxury Retreat',
                 'tagline'     => 'Wilderness Without Compromise',
                 'description' => 'An exclusive week-long retreat for those who want the full Lake Jipe experience with every comfort attended to. Private guide, lakeside suite, and a fully bespoke itinerary built around your interests.',
-                'price'       => '$1299',
+                'price'       => 'TZS 3,380,000',
                 'price_note'  => 'per person',
                 'duration'    => '6 Nights / 7 Days',
                 'image_url'   => 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=700&q=85',

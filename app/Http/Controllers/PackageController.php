@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\EnquiryReceived;
+use App\Mail\GuestConfirmation;
 use App\Models\Package;
 use App\Models\ContactMessage;
 use Illuminate\Http\Request;
@@ -69,7 +70,21 @@ class PackageController extends Controller
             Mail::to(config('mail.notify_to', config('mail.from.address')))
                 ->send(new EnquiryReceived('package', $data['name'], $data['email'], $data['phone'] ?? null, $subject, $messageBody));
         } catch (\Throwable) {
-            // Message saved to DB — email failure is non-fatal
+            // Non-fatal — booking saved to DB
+        }
+
+        // Confirmation to the guest
+        try {
+            Mail::to($data['email'])
+                ->send(new GuestConfirmation(
+                    'package',
+                    $data['name'],
+                    $data['email'],
+                    $package->name,
+                    $messageBody
+                ));
+        } catch (\Throwable) {
+            // Non-fatal
         }
 
         return back()->with('booking_success', true);

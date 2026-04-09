@@ -37,7 +37,7 @@ Route::post('/contact', [ContactController::class, 'store'])->middleware('thrott
 Route::post('/subscribe', [SubscriptionController::class, 'store'])->middleware('throttle:5,1')->name('subscribe');
 
 // ── Admin routes ───────────────────────────────────────────────────────────
-Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     // Hero slides
@@ -81,6 +81,6 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
 
 // ── Legacy dashboard redirect ──────────────────────────────────────────────
 Route::get('/dashboard', fn() => redirect()->route('admin.dashboard'))
-    ->middleware(['auth', 'verified'])->name('dashboard');
+    ->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';

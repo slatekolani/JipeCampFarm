@@ -30,7 +30,7 @@ export default function Login({ status, canResetPassword }: { status?: string; c
             <div className="min-h-screen flex bg-[#040e08]">
                 {/* Left: scenic panel */}
                 <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden">
-                        <img src="/Images/Camp siet.jpg" alt="About" className="absolute inset-0 w-full h-full object-cover"/>
+                        <img src="/Images/Canoeing.jpg" alt="Canoeing on Lake Jipe" className="absolute inset-0 w-full h-full object-cover"/>
 
                     <div className="absolute inset-0 bg-gradient-to-br from-[#040e08]/70 via-[#071510]/40 to-[#040e08]/20"/>
                     <div className="relative z-10 flex flex-col justify-between p-10 w-full">

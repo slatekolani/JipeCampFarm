@@ -30,7 +30,7 @@ export default function Packages({ packages }: PageProps<{ packages: Package[] }
                     "touristType": ["Camper", "Hiker", "Adventure Tourist", "Eco-Tourist"],
                     "offers": {
                         "@type": "AggregateOffer",
-                        "priceCurrency": "USD",
+                        "priceCurrency": "TZS",
                         "availability": "https://schema.org/InStock"
                     }
                 }`}</script>

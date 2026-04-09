@@ -114,19 +114,8 @@ function BookingModal({ pkg, onClose }: { pkg: Package; onClose: () => void }) {
                             </div>
                         </div>
 
-                        {/* Phone + Group size */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                                <label className="block text-white/50 text-xs uppercase tracking-wider mb-1.5">Phone Number</label>
-                                <input
-                                    type="tel"
-                                    value={data.phone}
-                                    onChange={e => setData('phone', e.target.value)}
-                                    placeholder="+1 555 000 0000"
-                                    className={inputCls}
-                                />
-                                {errors.phone && <p className="text-red-400 text-xs mt-1">{errors.phone}</p>}
-                            </div>
+                        {/* Group size */}
+                        <div className="grid grid-cols-1 gap-4">
                             <div>
                                 <label className="block text-white/50 text-xs uppercase tracking-wider mb-1.5">Group Size *</label>
                                 <div className="flex items-center gap-2">
@@ -260,7 +249,7 @@ export default function PackageDetail({ package: pkg, others }: PageProps<{ pack
                     "offers": {
                         "@type": "Offer",
                         "price": pkg.price || undefined,
-                        "priceCurrency": "USD",
+                        "priceCurrency": "TZS",
                         "availability": "https://schema.org/InStock",
                         "url": `https://www.lakejipecamp.co.tz/packages/${pkg.id}`
                     }

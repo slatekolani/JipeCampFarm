@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\EnquiryReceived;
+use App\Mail\GuestConfirmation;
 use App\Models\ContactMessage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -33,14 +34,30 @@ class ContactController extends Controller
 
         ContactMessage::create($validated);
 
+        $subject = $validated['subject'] ?? 'General Enquiry';
+
         $this->notify(
             'contact',
             $validated['name'],
             $validated['email'],
             $validated['phone'] ?? null,
-            $validated['subject'] ?? 'General Enquiry',
+            $subject,
             $validated['message']
         );
+
+        // Confirmation to the sender
+        try {
+            Mail::to($validated['email'])
+                ->send(new GuestConfirmation(
+                    'contact',
+                    $validated['name'],
+                    $validated['email'],
+                    $subject,
+                    $validated['message']
+                ));
+        } catch (\Throwable) {
+            // Non-fatal — message already saved
+        }
 
         return back()->with('success', 'Your message has been sent. We will respond within 24 hours.');
     }

@@ -494,8 +494,7 @@ export default function PublicLayout({ children, transparent = false }: { childr
                         <div>
                             <p className="text-white font-semibold text-sm mb-5 tracking-wide">Contact Us</p>
                             <ul className="space-y-3 text-white/45 text-sm">
-                                <li>info@lakejipecamp.co.tz</li>
-                                <li>+255 700 000 000</li>
+                                <li>info@jipefarmcampsite.com</li>
                             </ul>
                         </div>
                     </div>

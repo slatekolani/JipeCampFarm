@@ -50,8 +50,7 @@
                     "alternateName": ["Jipe Farm", "Lake Jipe Camp", "Jipe Farm Camp Site"],
                     "description": "Eco-friendly farm campsite on the shores of Lake Jipe in Kilimanjaro Region, Tanzania. Offering bush camping, canoeing, hiking, milking experiences, bonfire nights, birdwatching and wildlife adventures near Moshi.",
                     "url": "https://www.lakejipecamp.co.tz",
-                    "telephone": "+255700000000",
-                    "email": "info@lakejipecamp.co.tz",
+                    "email": "info@jipefarmcampsite.com",
                     "address": {
                         "@type": "PostalAddress",
                         "streetAddress": "Lake Jipe Shore",
@@ -99,6 +98,16 @@
             ]
         }
         </script>
+
+        <!-- ── Favicons ─────────────────────────────────────────────────── -->
+        <link rel="icon" href="/favicon.ico" sizes="16x16 32x32">
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <meta name="msapplication-TileImage" content="/icon-192.png">
+        <meta name="msapplication-TileColor" content="#071510">
 
         <!-- ── Fonts ─────────────────────────────────────────────────────── -->
         <link rel="preconnect" href="https://fonts.bunny.net">

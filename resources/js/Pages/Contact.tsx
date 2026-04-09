@@ -15,8 +15,7 @@ export default function Contact() {
     };
 
     const contacts = [
-        { icon: 'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z', label: 'Email', value: 'info@lakejipecamp.co.tz' },
-        { icon: 'M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z', label: 'Phone', value: '+255 700 000 000' },
+        { icon: 'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z', label: 'Email', value: 'info@jipefarmcampsite.com' },
         { icon: 'M15 10.5a3 3 0 11-6 0 3 3 0 016 0zM19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z', label: 'Location', value: 'Kilimanjaro Region, Tanzania' },
     ];
 
@@ -40,8 +39,7 @@ export default function Contact() {
                     "mainEntity": {
                         "@type": "Organization",
                         "name": "Jipe Farm Campsite",
-                        "telephone": "+255700000000",
-                        "email": "info@lakejipecamp.co.tz",
+                        "email": "info@jipefarmcampsite.com",
                         "address": {
                             "@type": "PostalAddress",
                             "addressLocality": "Lake Jipe",
@@ -50,7 +48,7 @@ export default function Contact() {
                         },
                         "contactPoint": {
                             "@type": "ContactPoint",
-                            "telephone": "+255700000000",
+                            "email": "info@jipefarmcampsite.com",
                             "contactType": "reservations",
                             "availableLanguage": ["English", "Swahili"],
                             "hoursAvailable": "Mo-Su 00:00-23:59"
@@ -109,12 +107,7 @@ export default function Contact() {
                                     {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
                                 </div>
                             </div>
-                            <div className="grid sm:grid-cols-2 gap-4">
-                                <div>
-                                    <label className="block text-white/50 text-xs uppercase tracking-wider mb-1.5">Phone</label>
-                                    <input type="tel" value={data.phone} onChange={e => setData('phone', e.target.value)} className="w-full bg-white/5 border border-white/10 focus:border-[#d4a853]/60 text-white placeholder-white/25 rounded-xl px-4 py-3 text-sm outline-none transition-colors" placeholder="+1 234 567 890"/>
-                                </div>
-                                <div>
+                            <div>
                                     <label className="block text-white/50 text-xs uppercase tracking-wider mb-1.5">Subject</label>
                                     <select value={data.subject} onChange={e => setData('subject', e.target.value)} className="w-full bg-[#0d1f13] border border-white/10 focus:border-[#d4a853]/60 text-white rounded-xl px-4 py-3 text-sm outline-none transition-colors">
                                         <option value="">Select a topic</option>
@@ -123,7 +116,6 @@ export default function Contact() {
                                         <option>Custom Itinerary</option>
                                         <option>General Question</option>
                                     </select>
-                                </div>
                             </div>
                             <div>
                                 <label className="block text-white/50 text-xs uppercase tracking-wider mb-1.5">Message *</label>
