@@ -297,7 +297,31 @@ export default function Welcome({ heroSlides, about, activities, packages, galle
 
     return (
         <PublicLayout transparent>
-            <Head title="Jipe Farm Campsite — Tanzania"/>
+            <Head title="Jipe Farm Campsite | Bush Camping, Canoeing &amp; Adventures near Kilimanjaro, Tanzania">
+                <meta name="description" content="Jipe Farm Campsite on Lake Jipe, Tanzania — the ultimate bush camping experience near Kilimanjaro and Moshi. Canoeing, hiking, milking, bonfire nights, camel riding and wildlife adventures. Book your escape today." />
+                <meta name="keywords" content="Jipe Farm, Jipe Farm Campsite, camping Kilimanjaro, Lake Jipe camping, bush camping Kilimanjaro, canoeing Kilimanjaro, canoeing Moshi, hiking Kilimanjaro, hiking Moshi, milking Kilimanjaro, bonfire Kilimanjaro, born fire Moshi, Tanzania camping, eco camp Tanzania, Kilimanjaro adventure, camel riding Tanzania, canoe safari Tanzania, birdwatching Kilimanjaro" />
+                <meta property="og:title" content="Jipe Farm Campsite | Bush Camping &amp; Adventures near Kilimanjaro" />
+                <meta property="og:description" content="Experience bush camping on the shores of Lake Jipe, Tanzania. Canoeing, hiking, milking, bonfire nights and wildlife adventures near Moshi and Kilimanjaro." />
+                <meta property="og:url" content="https://www.lakejipecamp.co.tz/" />
+                <meta property="og:type" content="website" />
+                <meta name="twitter:title" content="Jipe Farm Campsite | Bush Camping near Kilimanjaro, Tanzania" />
+                <meta name="twitter:description" content="Bush camping on Lake Jipe — canoeing, hiking, milking, bonfire nights &amp; wildlife adventures near Moshi, Tanzania." />
+                <link rel="canonical" href="https://www.lakejipecamp.co.tz/" />
+                <script type="application/ld+json">{`{
+                    "@context": "https://schema.org",
+                    "@type": "ItemList",
+                    "name": "Activities at Jipe Farm Campsite",
+                    "description": "Adventure activities available at Jipe Farm Campsite near Kilimanjaro, Tanzania",
+                    "itemListElement": [
+                        { "@type": "ListItem", "position": 1, "name": "Canoeing on Lake Jipe", "description": "Canoe safari on Lake Jipe near Kilimanjaro, Tanzania" },
+                        { "@type": "ListItem", "position": 2, "name": "Hiking in Kilimanjaro Region", "description": "Guided hiking trails in Kilimanjaro and Moshi area" },
+                        { "@type": "ListItem", "position": 3, "name": "Bush Camping", "description": "Authentic bush camping under the stars at Lake Jipe" },
+                        { "@type": "ListItem", "position": 4, "name": "Farm Milking Experience", "description": "Traditional farm milking experience in Kilimanjaro" },
+                        { "@type": "ListItem", "position": 5, "name": "Bonfire Nights", "description": "Traditional bonfire nights at Jipe Farm Campsite, Moshi" },
+                        { "@type": "ListItem", "position": 6, "name": "Camel Riding", "description": "Camel riding experience near Lake Jipe, Tanzania" }
+                    ]
+                }`}</script>
+            </Head>
             <style>{`html{scroll-behavior:smooth}::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:#040e08}::-webkit-scrollbar-thumb{background:#2d6a4f;border-radius:3px}::-webkit-scrollbar-thumb:hover{background:#d4a853}`}</style>
 
             <HeroCarousel slides={heroSlides}/>

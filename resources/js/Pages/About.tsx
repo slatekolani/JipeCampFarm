@@ -5,7 +5,39 @@ import PublicLayout from '@/Layouts/PublicLayout';
 export default function About({ about }: PageProps<{ about: AboutSection | null }>) {
     return (
         <PublicLayout>
-            <Head title="About — Jipe Farm Campsite"/>
+            <Head title="About Jipe Farm Campsite | Eco Bush Camp on Lake Jipe, Kilimanjaro Tanzania">
+                <meta name="description" content="Learn about Jipe Farm Campsite — an eco-friendly farm campsite on the shores of Lake Jipe in Kilimanjaro Region, Tanzania. International-standard bush camping near Moshi with untouched nature and unforgettable experiences." />
+                <meta name="keywords" content="about Jipe Farm, Jipe Farm Campsite story, Lake Jipe Tanzania, eco camp Kilimanjaro, bush camp Moshi, Tanzania wilderness camp, Kilimanjaro region campsite, Lake Jipe shore camp, Tanzania eco tourism, farm campsite Tanzania" />
+                <meta property="og:title" content="About Jipe Farm Campsite — Lake Jipe, Kilimanjaro Tanzania" />
+                <meta property="og:description" content="Eco-friendly farm campsite on Lake Jipe, Kilimanjaro Region. International-standard bush camping, canoeing, hiking and wildlife adventures near Moshi, Tanzania." />
+                <meta property="og:url" content="https://www.lakejipecamp.co.tz/about" />
+                <meta name="twitter:title" content="About Jipe Farm Campsite — Lake Jipe, Kilimanjaro" />
+                <meta name="twitter:description" content="Eco-friendly bush campsite on Lake Jipe. Untouched nature and international-standard adventures near Moshi, Tanzania." />
+                <link rel="canonical" href="https://www.lakejipecamp.co.tz/about" />
+                <script type="application/ld+json">{`{
+                    "@context": "https://schema.org",
+                    "@type": "AboutPage",
+                    "name": "About Jipe Farm Campsite",
+                    "url": "https://www.lakejipecamp.co.tz/about",
+                    "description": "Eco-friendly farm campsite on the shores of Lake Jipe, Kilimanjaro Region, Tanzania. International-standard bush camping, canoeing, hiking and wildlife near Moshi.",
+                    "mainEntity": {
+                        "@type": ["LodgingBusiness", "TouristAttraction"],
+                        "name": "Jipe Farm Campsite",
+                        "description": "An eco-friendly farm campsite on the shores of Lake Jipe in northern Tanzania, Kilimanjaro Region, near Moshi. Offering canoeing, hiking, milking, bonfire nights, camel riding and wildlife adventures.",
+                        "address": {
+                            "@type": "PostalAddress",
+                            "addressLocality": "Lake Jipe",
+                            "addressRegion": "Kilimanjaro",
+                            "addressCountry": "TZ"
+                        },
+                        "geo": {
+                            "@type": "GeoCoordinates",
+                            "latitude": -3.633333,
+                            "longitude": 37.783333
+                        }
+                    }
+                }`}</script>
+            </Head>
             <div className="relative h-72 lg:h-screen flex items-end overflow-hidden">
                 <img src="/Images/Camp site food.jpg" alt="About" className="absolute inset-0 w-full h-full object-cover"/>
                 <div className="absolute inset-0 bg-gradient-to-b from-[#071510]/20 via-[#071510]/40 to-[#071510]"/>

@@ -5,7 +5,36 @@ import PublicLayout from '@/Layouts/PublicLayout';
 export default function Packages({ packages }: PageProps<{ packages: Package[] }>) {
     return (
         <PublicLayout>
-            <Head title="Tour Packages — Jipe Farm Campsite" />
+            <Head title="Tour Packages | Bush Camping &amp; Adventure Packages — Jipe Farm Campsite, Kilimanjaro">
+                <meta name="description" content="Choose from curated camping packages at Jipe Farm Campsite near Kilimanjaro, Tanzania. Weekend escapes to week-long immersions — canoeing, hiking, milking, bonfires and bush camping near Moshi." />
+                <meta name="keywords" content="Jipe Farm tour packages, camping packages Kilimanjaro, bush camping package Tanzania, canoeing package Moshi, hiking package Kilimanjaro, Tanzania adventure package, Lake Jipe tour, Kilimanjaro camping package, Moshi camping weekend, Tanzania eco tourism package" />
+                <meta property="og:title" content="Tour Packages — Jipe Farm Campsite, Kilimanjaro Tanzania" />
+                <meta property="og:description" content="Curated camping and adventure packages at Jipe Farm Campsite near Kilimanjaro. From weekend escapes to week-long wilderness immersions near Moshi, Tanzania." />
+                <meta property="og:url" content="https://www.lakejipecamp.co.tz/packages" />
+                <meta name="twitter:title" content="Tour Packages — Jipe Farm Campsite, Kilimanjaro" />
+                <meta name="twitter:description" content="Curated camping &amp; adventure packages near Kilimanjaro and Moshi. Book your Tanzania wilderness experience at Jipe Farm." />
+                <link rel="canonical" href="https://www.lakejipecamp.co.tz/packages" />
+                <script type="application/ld+json">{`{
+                    "@context": "https://schema.org",
+                    "@type": "TouristTrip",
+                    "name": "Jipe Farm Campsite Tour Packages",
+                    "description": "Curated camping and adventure packages at Jipe Farm Campsite on Lake Jipe, near Kilimanjaro and Moshi, Tanzania",
+                    "itinerary": {
+                        "@type": "ItemList",
+                        "itemListElement": [
+                            { "@type": "ListItem", "position": 1, "name": "Bush Camping Weekend Package — Kilimanjaro, Tanzania" },
+                            { "@type": "ListItem", "position": 2, "name": "Canoeing & Hiking Package — Lake Jipe, Moshi" },
+                            { "@type": "ListItem", "position": 3, "name": "Full Immersion Farm & Wildlife Package — Kilimanjaro" }
+                        ]
+                    },
+                    "touristType": ["Camper", "Hiker", "Adventure Tourist", "Eco-Tourist"],
+                    "offers": {
+                        "@type": "AggregateOffer",
+                        "priceCurrency": "USD",
+                        "availability": "https://schema.org/InStock"
+                    }
+                }`}</script>
+            </Head>
             <div className="relative h-72 lg:h-screen flex items-end overflow-hidden">
                 <img src="/Images/Tent.jpg" alt="About" className="absolute inset-0 w-full h-full object-cover"/>
                 <div className="absolute inset-0 bg-gradient-to-b from-[#071510]/20 via-[#071510]/40 to-[#071510]" />

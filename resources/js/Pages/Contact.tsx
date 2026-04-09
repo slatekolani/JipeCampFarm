@@ -22,7 +22,42 @@ export default function Contact() {
 
     return (
         <PublicLayout>
-            <Head title="Contact — Jipe Farm Campsite"/>
+            <Head title="Contact &amp; Book | Jipe Farm Campsite — Lake Jipe, Kilimanjaro Tanzania">
+                <meta name="description" content="Contact Jipe Farm Campsite to book your bush camping, canoeing, hiking or adventure package near Kilimanjaro and Moshi, Tanzania. We respond within 24 hours." />
+                <meta name="keywords" content="contact Jipe Farm, book camping Kilimanjaro, book canoeing Moshi, book hiking Kilimanjaro, Tanzania camping booking, Jipe Farm booking, Lake Jipe contact, bush camping reservation Tanzania, Kilimanjaro camp booking" />
+                <meta property="og:title" content="Contact &amp; Book — Jipe Farm Campsite, Kilimanjaro Tanzania" />
+                <meta property="og:description" content="Book your camping adventure at Jipe Farm Campsite near Kilimanjaro. Canoeing, hiking, milking, bonfire nights near Moshi, Tanzania. We respond within 24 hours." />
+                <meta property="og:url" content="https://www.lakejipecamp.co.tz/contact" />
+                <meta name="twitter:title" content="Contact Jipe Farm Campsite — Book Camping near Kilimanjaro" />
+                <meta name="twitter:description" content="Book your adventure at Jipe Farm Campsite. Canoeing, hiking, bush camping &amp; more near Moshi and Kilimanjaro, Tanzania." />
+                <link rel="canonical" href="https://www.lakejipecamp.co.tz/contact" />
+                <script type="application/ld+json">{`{
+                    "@context": "https://schema.org",
+                    "@type": "ContactPage",
+                    "name": "Contact Jipe Farm Campsite",
+                    "url": "https://www.lakejipecamp.co.tz/contact",
+                    "description": "Book or enquire about bush camping, canoeing, hiking and adventure packages at Jipe Farm Campsite near Kilimanjaro and Moshi, Tanzania",
+                    "mainEntity": {
+                        "@type": "Organization",
+                        "name": "Jipe Farm Campsite",
+                        "telephone": "+255700000000",
+                        "email": "info@lakejipecamp.co.tz",
+                        "address": {
+                            "@type": "PostalAddress",
+                            "addressLocality": "Lake Jipe",
+                            "addressRegion": "Kilimanjaro",
+                            "addressCountry": "TZ"
+                        },
+                        "contactPoint": {
+                            "@type": "ContactPoint",
+                            "telephone": "+255700000000",
+                            "contactType": "reservations",
+                            "availableLanguage": ["English", "Swahili"],
+                            "hoursAvailable": "Mo-Su 00:00-23:59"
+                        }
+                    }
+                }`}</script>
+            </Head>
            <div className="relative h-96 lg:h-screen flex items-end overflow-hidden">
                 <img src="/Images/Camel Riding.jpg" alt="About" className="absolute inset-0 w-full h-full object-cover"/>
                 <div className="absolute inset-0 bg-gradient-to-b from-[#071510]/30 via-[#071510]/50 to-[#071510]"/>

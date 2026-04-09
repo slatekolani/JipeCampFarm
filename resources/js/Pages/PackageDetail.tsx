@@ -227,7 +227,45 @@ export default function PackageDetail({ package: pkg, others }: PageProps<{ pack
 
     return (
         <PublicLayout>
-            <Head title={`${pkg.name} — Jipe Farm Campsite`} />
+            <Head title={`${pkg.name} | Tour Package — Jipe Farm Campsite, Kilimanjaro Tanzania`}>
+                <meta name="description" content={`${pkg.description ? pkg.description.slice(0, 155) : `${pkg.name} — a curated camping and adventure package at Jipe Farm Campsite on Lake Jipe, near Kilimanjaro and Moshi, Tanzania.`}`} />
+                <meta name="keywords" content={`${pkg.name}, camping package Kilimanjaro, bush camping package Tanzania, ${pkg.duration ? pkg.duration + ' Tanzania camp, ' : ''}Jipe Farm package, Lake Jipe tour package, adventure package Moshi, Tanzania eco tourism`} />
+                <meta property="og:title" content={`${pkg.name} — Jipe Farm Campsite, Kilimanjaro Tanzania`} />
+                <meta property="og:description" content={pkg.description ? pkg.description.slice(0, 200) : `${pkg.name} at Jipe Farm Campsite near Kilimanjaro, Tanzania.`} />
+                <meta property="og:url" content={`https://www.lakejipecamp.co.tz/packages/${pkg.id}`} />
+                {pkg.image_url && <meta property="og:image" content={pkg.image_url} />}
+                <meta name="twitter:title" content={`${pkg.name} — Jipe Farm Campsite`} />
+                <meta name="twitter:description" content={pkg.description ? pkg.description.slice(0, 200) : `${pkg.name} at Jipe Farm Campsite near Kilimanjaro, Tanzania.`} />
+                {pkg.image_url && <meta name="twitter:image" content={pkg.image_url} />}
+                <link rel="canonical" href={`https://www.lakejipecamp.co.tz/packages/${pkg.id}`} />
+                <script type="application/ld+json">{JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "TouristTrip",
+                    "name": pkg.name,
+                    "description": pkg.description || `${pkg.name} — camping and adventure package at Jipe Farm Campsite near Kilimanjaro and Moshi, Tanzania.`,
+                    "url": `https://www.lakejipecamp.co.tz/packages/${pkg.id}`,
+                    "image": pkg.image_url || undefined,
+                    "touristType": ["Adventure Tourist", "Eco-Tourist", "Camper", "Nature Lover"],
+                    ...(pkg.duration ? { "itinerary": pkg.duration } : {}),
+                    "provider": {
+                        "@type": "TouristInformationCenter",
+                        "name": "Jipe Farm Campsite",
+                        "address": {
+                            "@type": "PostalAddress",
+                            "addressLocality": "Lake Jipe",
+                            "addressRegion": "Kilimanjaro",
+                            "addressCountry": "TZ"
+                        }
+                    },
+                    "offers": {
+                        "@type": "Offer",
+                        "price": pkg.price || undefined,
+                        "priceCurrency": "USD",
+                        "availability": "https://schema.org/InStock",
+                        "url": `https://www.lakejipecamp.co.tz/packages/${pkg.id}`
+                    }
+                })}</script>
+            </Head>
 
             {/* Booking modal */}
             {showBooking && <BookingModal pkg={pkg} onClose={() => setShowBooking(false)} />}

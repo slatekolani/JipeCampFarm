@@ -11,7 +11,16 @@ export default function Gallery({ images, categories }: PageProps<{ images: Gall
 
     return (
         <PublicLayout>
-            <Head title="Gallery — Jipe Farm Campsite"/>
+            <Head title="Gallery | Jipe Farm Campsite — Lake Jipe, Kilimanjaro Tanzania">
+                <meta name="description" content="Photo gallery of Jipe Farm Campsite — bush camping, canoeing on Lake Jipe, hiking near Kilimanjaro, bonfire nights, farm milking, wildlife and nature photography from Moshi, Tanzania." />
+                <meta name="keywords" content="Jipe Farm photos, Lake Jipe gallery, camping Kilimanjaro photos, canoeing Lake Jipe, hiking Kilimanjaro photos, bonfire Tanzania, bush camping photos, Tanzania wildlife photos, Kilimanjaro nature, Moshi Tanzania camping" />
+                <meta property="og:title" content="Gallery — Jipe Farm Campsite, Lake Jipe Tanzania" />
+                <meta property="og:description" content="Photos from Jipe Farm Campsite: bush camping, canoeing, hiking, bonfire nights and wildlife near Kilimanjaro and Moshi, Tanzania." />
+                <meta property="og:url" content="https://www.lakejipecamp.co.tz/gallery" />
+                <meta name="twitter:title" content="Gallery — Jipe Farm Campsite, Kilimanjaro Tanzania" />
+                <meta name="twitter:description" content="Bush camping, canoeing, hiking and bonfire nights at Jipe Farm on Lake Jipe near Kilimanjaro, Tanzania." />
+                <link rel="canonical" href="https://www.lakejipecamp.co.tz/gallery" />
+            </Head>
 
             <div className="relative h-72 lg:h-screen flex items-end overflow-hidden">
                 <img src="/Images/Jipe Lake.jpg" alt="About" className="absolute inset-0 w-full h-full object-cover"/>

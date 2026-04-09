@@ -252,7 +252,48 @@ export default function ActivityDetail({ activity, related }: PageProps<{ activi
 
     return (
         <PublicLayout>
-            <Head title={`${activity.title} — Jipe Farm Campsite`} />
+            <Head title={`${activity.title} | Activity at Jipe Farm Campsite — Kilimanjaro, Tanzania`}>
+                <meta name="description" content={`${activity.description ? activity.description.slice(0, 155) : `${activity.title} — an adventure activity at Jipe Farm Campsite on Lake Jipe, near Kilimanjaro and Moshi, Tanzania.`}`} />
+                <meta name="keywords" content={`${activity.title}, ${activity.title} Kilimanjaro, ${activity.title} Moshi, Jipe Farm ${activity.title}, Lake Jipe activities, bush camping Tanzania, adventure Kilimanjaro, Jipe Farm Campsite`} />
+                <meta property="og:title" content={`${activity.title} — Jipe Farm Campsite, Kilimanjaro Tanzania`} />
+                <meta property="og:description" content={activity.description ? activity.description.slice(0, 200) : `${activity.title} at Jipe Farm Campsite on Lake Jipe near Kilimanjaro, Tanzania.`} />
+                <meta property="og:url" content={`https://www.lakejipecamp.co.tz/activities/${activity.id}`} />
+                {activity.image_url && <meta property="og:image" content={activity.image_url} />}
+                <meta name="twitter:title" content={`${activity.title} — Jipe Farm Campsite`} />
+                <meta name="twitter:description" content={activity.description ? activity.description.slice(0, 200) : `${activity.title} at Jipe Farm near Kilimanjaro, Tanzania.`} />
+                {activity.image_url && <meta name="twitter:image" content={activity.image_url} />}
+                <link rel="canonical" href={`https://www.lakejipecamp.co.tz/activities/${activity.id}`} />
+                <script type="application/ld+json">{JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "TouristAttraction",
+                    "name": `${activity.title} — Jipe Farm Campsite`,
+                    "description": activity.description || `${activity.title} activity at Jipe Farm Campsite on Lake Jipe, near Kilimanjaro and Moshi, Tanzania.`,
+                    "url": `https://www.lakejipecamp.co.tz/activities/${activity.id}`,
+                    "image": activity.image_url || undefined,
+                    "touristType": ["Adventure Tourist", "Eco-Tourist", "Nature Lover"],
+                    "location": {
+                        "@type": "Place",
+                        "name": "Jipe Farm Campsite",
+                        "address": {
+                            "@type": "PostalAddress",
+                            "addressLocality": "Lake Jipe",
+                            "addressRegion": "Kilimanjaro",
+                            "addressCountry": "TZ"
+                        },
+                        "geo": {
+                            "@type": "GeoCoordinates",
+                            "latitude": -3.633333,
+                            "longitude": 37.783333
+                        }
+                    },
+                    ...(activity.duration ? { "timeRequired": activity.duration } : {}),
+                    "offers": {
+                        "@type": "Offer",
+                        "availability": "https://schema.org/InStock",
+                        "url": `https://www.lakejipecamp.co.tz/activities/${activity.id}`
+                    }
+                })}</script>
+            </Head>
 
             {showBooking && <BookingModal activity={activity} onClose={() => setShowBooking(false)} />}
 
