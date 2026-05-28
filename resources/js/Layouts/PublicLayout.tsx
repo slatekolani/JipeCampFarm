@@ -41,6 +41,12 @@ const navItems = [
     { label: 'Contact', href: '/contact' },
 ];
 
+const campContacts = [
+    { name: 'Edgar Edgar', phone: '0743154530' },
+    { name: 'Cuthbert Emanuel', phone: '0753513146' },
+    { name: 'Samuel', phone: '0779251541' },
+];
+
 function DropdownMenu({ items, visible }: { items: { label: string; href: string; desc: string }[]; visible: boolean }) {
     return (
         <div
@@ -465,7 +471,7 @@ export default function PublicLayout({ children, transparent = false }: { childr
             {/* Footer */}
             <footer className="bg-[#040e08] border-t border-white/8 pt-16 pb-8">
                 <div className="max-w-7xl mx-auto px-5 lg:px-8">
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-10 mb-14">
                         <div className="lg:col-span-2">
                             <div className="flex items-center gap-3 mb-5">
                                 <div className="w-10 h-10"><WaveIcon /></div>
@@ -495,7 +501,30 @@ export default function PublicLayout({ children, transparent = false }: { childr
                             <p className="text-white font-semibold text-sm mb-5 tracking-wide">Contact Us</p>
                             <ul className="space-y-3 text-white/45 text-sm">
                                 <li>info@jipefarmcampsite.com</li>
+                                {campContacts.map(contact => (
+                                    <li key={contact.phone}>
+                                        <a href={`tel:${contact.phone}`} className="group flex flex-col gap-0.5 hover:text-[#d4a853] transition-colors">
+                                            <span className="text-white/55 group-hover:text-[#d4a853]">{contact.name}</span>
+                                            <span>{contact.phone}</span>
+                                        </a>
+                                    </li>
+                                ))}
                             </ul>
+                        </div>
+                        <div className="sm:col-span-2 lg:col-span-1">
+                            <p className="text-white font-semibold text-sm mb-5 tracking-wide">Find Us</p>
+                            <div className="overflow-hidden rounded-xl border border-white/10 bg-[#0d1f13] h-44">
+                                <iframe
+                                    title="Jipe Farm Campsite footer location"
+                                    src="https://maps.google.com/maps?q=-3.598951,37.699760&z=15&output=embed"
+                                    className="w-full h-full"
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                />
+                            </div>
+                            <a href="https://maps.app.goo.gl/LNkSLU85HYBx9KRg9" target="_blank" rel="noreferrer" className="inline-flex mt-3 text-[#d4a853] hover:text-[#c49640] text-xs font-semibold">
+                                Open Google Maps
+                            </a>
                         </div>
                     </div>
                     <div className="border-t border-white/8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-white/30 text-xs">

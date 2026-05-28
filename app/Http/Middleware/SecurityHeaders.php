@@ -49,6 +49,7 @@ class SecurityHeaders
             "img-src 'self' data: blob: https://images.unsplash.com",
             $fontSrc,
             $connectSrc,
+            "frame-src 'self' https://www.google.com https://maps.google.com",
             "frame-ancestors 'self'",
             "base-uri 'self'",
             "form-action 'self'",

@@ -114,6 +114,20 @@ function BookingModal({ pkg, onClose }: { pkg: Package; onClose: () => void }) {
                             </div>
                         </div>
 
+                        {/* Phone */}
+                        <div>
+                            <label className="block text-white/50 text-xs uppercase tracking-wider mb-1.5">Phone Number *</label>
+                            <input
+                                type="tel"
+                                value={data.phone}
+                                onChange={e => setData('phone', e.target.value)}
+                                required
+                                placeholder="+255 7XX XXX XXX"
+                                className={inputCls}
+                            />
+                            {errors.phone && <p className="text-red-400 text-xs mt-1">{errors.phone}</p>}
+                        </div>
+
                         {/* Group size */}
                         <div className="grid grid-cols-1 gap-4">
                             <div>
@@ -208,6 +222,20 @@ function BookingModal({ pkg, onClose }: { pkg: Package; onClose: () => void }) {
 export default function PackageDetail({ package: pkg, others }: PageProps<{ package: Package; others: Package[] }>) {
     const [showBooking, setShowBooking] = useState(false);
     const { flash } = usePage<PageProps>().props;
+    const phoneContacts = [
+        { name: 'Edgar Edgar', phone: '0743154530' },
+        { name: 'Cuthbert Emanuel', phone: '0753513146' },
+        { name: 'Samuel', phone: '0779251541' },
+    ];
+    const publicTransport = [
+        { route: 'Moshi town to Kifaru', cost: '3,000/=' },
+        { route: 'Kifaru to Jipe Farm (Take a toyo)', cost: '18,000/=' },
+    ];
+    const boltOptions = [
+        { type: 'Bajaji (3-Wheeler)', cost: '86,000/=' },
+        { type: 'Car', cost: '121,000/=' },
+        { type: 'Motorbike', cost: '50,500/=' },
+    ];
 
     // Auto-open modal after successful submission to show success state
     useEffect(() => {
@@ -348,6 +376,49 @@ export default function PackageDetail({ package: pkg, others }: PageProps<{ pack
                                 </div>
                             </div>
                         </div>
+
+                        <div>
+                            <h2 className="text-lg font-semibold text-white mb-5 flex items-center gap-2">
+                                <span className="w-1 h-5 bg-[#d4a853] rounded-full inline-block" />
+                                Location & Transport
+                            </h2>
+                            <div className="overflow-hidden rounded-2xl border border-white/8 bg-[#0d1f13] mb-5">
+                                <iframe
+                                    title="Jipe Farm Campsite location"
+                                    src="https://maps.google.com/maps?q=-3.598951,37.699760&z=15&output=embed"
+                                    className="w-full h-[320px]"
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                />
+                            </div>
+                            <p className="text-white/55 text-sm leading-relaxed mb-5">
+                                If you decide to come individually, the location of the camp is here: <a href="https://maps.app.goo.gl/LNkSLU85HYBx9KRg9" target="_blank" rel="noreferrer" className="text-[#d4a853] hover:text-[#c49640]">open Jipe Farm Campsite on Google Maps</a>. Total distance is 51km.
+                            </p>
+                            <div className="grid sm:grid-cols-2 gap-4">
+                                <div className="bg-white/3 border border-white/8 rounded-2xl p-5">
+                                    <h3 className="text-white font-semibold text-sm mb-4">Public Transportation</h3>
+                                    <div className="space-y-3">
+                                        {publicTransport.map(item => (
+                                            <div key={item.route} className="flex items-start justify-between gap-3 border-b border-white/5 pb-3 last:border-0 last:pb-0">
+                                                <span className="text-white/55 text-sm leading-snug">{item.route}</span>
+                                                <span className="text-[#d4a853] text-sm font-bold whitespace-nowrap">{item.cost}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="bg-white/3 border border-white/8 rounded-2xl p-5">
+                                    <h3 className="text-white font-semibold text-sm mb-4">Bolt Estimates</h3>
+                                    <div className="space-y-3">
+                                        {boltOptions.map(item => (
+                                            <div key={item.type} className="flex items-start justify-between gap-3 border-b border-white/5 pb-3 last:border-0 last:pb-0">
+                                                <span className="text-white/55 text-sm leading-snug">{item.type}</span>
+                                                <span className="text-[#d4a853] text-sm font-bold whitespace-nowrap">{item.cost}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     {/* Sidebar */}
@@ -382,6 +453,18 @@ export default function PackageDetail({ package: pkg, others }: PageProps<{ pack
                             <p className="text-white text-sm font-medium">Jipe Farm Campsite</p>
                             <p className="text-white/50 text-xs mt-1">Mkomazi Ecosystem, Tanzania</p>
                             <p className="text-white/30 text-xs mt-0.5">3°36′S 37°45′E</p>
+                        </div>
+
+                        <div className="bg-white/3 border border-white/8 rounded-2xl p-5">
+                            <h3 className="text-white/50 text-xs uppercase tracking-wider mb-4">Call Us</h3>
+                            <div className="space-y-3">
+                                {phoneContacts.map(contact => (
+                                    <a key={contact.phone} href={`tel:${contact.phone}`} className="flex items-center justify-between gap-3 border-b border-white/5 pb-3 last:border-0 last:pb-0 group">
+                                        <span className="text-white/65 text-sm group-hover:text-white transition-colors">{contact.name}</span>
+                                        <span className="text-[#d4a853] text-sm font-semibold whitespace-nowrap">{contact.phone}</span>
+                                    </a>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>

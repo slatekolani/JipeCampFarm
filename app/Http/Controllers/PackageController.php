@@ -38,7 +38,7 @@ class PackageController extends Controller
         $data = $request->validate([
             'name'        => 'required|string|max:150',
             'email'       => 'required|email|max:200',
-            'phone'       => 'nullable|string|max:30',
+            'phone'       => 'required|string|max:30',
             'group_size'  => 'required|integer|min:1|max:200',
             'notes'       => 'nullable|string|max:1000',
             'wants_deals' => 'nullable|in:yes,no',
