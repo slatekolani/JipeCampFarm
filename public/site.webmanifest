@@ -1,11 +1,11 @@
 {
     "name": "Jipe Farm Campsite",
     "short_name": "Jipe Farm",
-    "description": "Bush camping, canoeing and adventures on Lake Jipe, Kilimanjaro, Tanzania",
+    "description": "Farm camping, canoeing and adventures on Lake Jipe, Kilimanjaro, Tanzania",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#071510",
-    "theme_color": "#d4a853",
+    "theme_color": "#2f6f2f",
     "icons": [
         {
             "src": "/favicon-16.png",
@@ -23,7 +23,7 @@
             "type": "image/png"
         },
         {
-            "src": "/apple-touch-icon.png",
+            "src": "/brand/jipe-farm-campsite-logo-512.png",
             "sizes": "512x512",
             "type": "image/png"
         }

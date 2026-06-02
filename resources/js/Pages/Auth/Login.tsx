@@ -1,19 +1,6 @@
 import { useEffect, FormEventHandler } from 'react';
 import { Head, useForm } from '@inertiajs/react';
-
-const WaveIcon = () => (
-    <svg viewBox="0 0 40 40" fill="none" className="w-full h-full">
-        <circle cx="20" cy="20" r="20" fill="#d4a853"/>
-        {/* Tent body */}
-        <path d="M20 9 L6 29 L34 29 Z" fill="#071510"/>
-        {/* Door arch */}
-        <path d="M15 29 L15 23 Q20 17 25 23 L25 29 Z" fill="#d4a853"/>
-        {/* Ground line */}
-        <line x1="5" y1="31" x2="35" y2="31" stroke="#071510" strokeWidth="1.5" strokeLinecap="round" opacity="0.4"/>
-        {/* Star */}
-        <circle cx="30" cy="13" r="1.3" fill="#071510" opacity="0.65"/>
-    </svg>
-);
+import BrandLogo from '@/Components/BrandLogo';
 
 export default function Login({ status, canResetPassword }: { status?: string; canResetPassword: boolean }) {
     const { data, setData, post, processing, errors, reset } = useForm({ email: '', password: '', remember: false });
@@ -36,10 +23,10 @@ export default function Login({ status, canResetPassword }: { status?: string; c
                     <div className="relative z-10 flex flex-col justify-between p-10 w-full">
                         {/* Logo */}
                         <div className="flex items-center gap-3">
-                            <div className="w-10 h-10"><WaveIcon /></div>
+                            <BrandLogo className="h-16 w-16 shrink-0" />
                             <div>
                                 <p className="text-white font-bold text-lg leading-none">Jipe Farm Campsite</p>
-                                <p className="text-[#d4a853] text-[10px] tracking-[0.25em] uppercase mt-0.5">Campsite · Tanzania</p>
+                                <p className="text-[#f1ce47] text-[10px] tracking-[0.2em] uppercase mt-1">Lake Jipe · Tanzania</p>
                             </div>
                         </div>
 
@@ -52,7 +39,7 @@ export default function Login({ status, canResetPassword }: { status?: string; c
                             <p className="text-[#d4a853] text-sm font-semibold">— Edward Abbey</p>
                             <div className="mt-8 flex items-center gap-3">
                                 <div className="w-8 h-px bg-white/20"/>
-                                <p className="text-white/40 text-xs tracking-widest uppercase">Mkomazi · Tanzania · 3°S, 37°E</p>
+                                <p className="text-white/40 text-xs tracking-widest uppercase">Lake Jipe · Tanzania · 3°S, 37°E</p>
                             </div>
                         </div>
                     </div>
@@ -63,10 +50,10 @@ export default function Login({ status, canResetPassword }: { status?: string; c
                     <div className="w-full max-w-md">
                         {/* Mobile logo */}
                         <div className="flex items-center gap-3 mb-10 lg:hidden">
-                            <div className="w-10 h-10"><WaveIcon /></div>
+                            <BrandLogo className="h-16 w-16 shrink-0" />
                             <div>
                                 <p className="text-white font-bold text-lg leading-none">Jipe Farm Campsite</p>
-                                <p className="text-[#d4a853] text-[10px] tracking-[0.25em] uppercase mt-0.5">Tanzania</p>
+                                <p className="text-[#f1ce47] text-[10px] tracking-[0.2em] uppercase mt-1">Tanzania</p>
                             </div>
                         </div>
 

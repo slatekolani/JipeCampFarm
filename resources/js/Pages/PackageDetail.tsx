@@ -451,7 +451,7 @@ export default function PackageDetail({ package: pkg, others }: PageProps<{ pack
                         <div className="bg-white/3 border border-white/8 rounded-2xl p-5">
                             <h3 className="text-white/50 text-xs uppercase tracking-wider mb-3">Location</h3>
                             <p className="text-white text-sm font-medium">Jipe Farm Campsite</p>
-                            <p className="text-white/50 text-xs mt-1">Mkomazi Ecosystem, Tanzania</p>
+                            <p className="text-white/50 text-xs mt-1">Lake Jipe, Kilimanjaro, Tanzania</p>
                             <p className="text-white/30 text-xs mt-0.5">3°36′S 37°45′E</p>
                         </div>
 

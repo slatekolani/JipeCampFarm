@@ -10,7 +10,7 @@
         .wrapper { max-width: 620px; margin: 32px auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
         .header { background: #071510; padding: 32px 40px; }
         .header-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
-        .logo-circle { width: 42px; height: 42px; background: #d4a853; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .logo-image { width: 52px; height: 52px; border-radius: 6px; background: #ffffff; object-fit: contain; padding: 3px; flex-shrink: 0; }
         .logo-text h1 { color: #ffffff; font-size: 18px; font-weight: 700; line-height: 1; }
         .logo-text p  { color: #d4a853; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; margin-top: 3px; }
         .badge { display: inline-block; padding: 5px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
@@ -51,17 +51,10 @@
     <!-- ── Header ──────────────────────────────────────────────────────── -->
     <div class="header">
         <div class="header-logo">
-            <div class="logo-circle">
-                <svg width="22" height="22" viewBox="0 0 40 40" fill="none">
-                    <path d="M20 9 L6 29 L34 29 Z" fill="#071510"/>
-                    <path d="M15 29 L15 23 Q20 17 25 23 L25 29 Z" fill="#d4a853"/>
-                    <line x1="5" y1="31" x2="35" y2="31" stroke="#071510" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
-                    <circle cx="30" cy="13" r="1.3" fill="#071510" opacity="0.65"/>
-                </svg>
-            </div>
+            <img class="logo-image" src="{{ config('app.url') }}/brand/jipe-farm-campsite-logo.jpeg" alt="Jipe Farm Campsite logo">
             <div class="logo-text">
                 <h1>Jipe Farm Campsite</h1>
-                <p>Campsite · Tanzania</p>
+                <p>Lake Jipe · Tanzania</p>
             </div>
         </div>
         <span class="badge badge-{{ $type }}">

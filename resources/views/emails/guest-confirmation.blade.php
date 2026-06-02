@@ -11,7 +11,7 @@
 
         /* Header */
         .header { background: #071510; padding: 40px 40px 32px; text-align: center; }
-        .logo-circle { width: 52px; height: 52px; background: #d4a853; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+        .logo-image { width: 72px; height: 72px; border-radius: 6px; background: #ffffff; object-fit: contain; padding: 4px; margin-bottom: 16px; }
         .logo-name { color: #ffffff; font-size: 20px; font-weight: 700; letter-spacing: 0.02em; }
         .logo-tagline { color: #d4a853; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; margin-top: 3px; }
 
@@ -70,14 +70,7 @@
 
     <!-- ── Header ───────────────────────────────────────────────────────── -->
     <div class="header">
-        <div class="logo-circle">
-            <svg width="26" height="26" viewBox="0 0 40 40" fill="none">
-                <path d="M20 9 L6 29 L34 29 Z" fill="#071510"/>
-                <path d="M15 29 L15 23 Q20 17 25 23 L25 29 Z" fill="#d4a853"/>
-                <line x1="5" y1="31" x2="35" y2="31" stroke="#071510" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
-                <circle cx="30" cy="13" r="1.3" fill="#071510" opacity="0.65"/>
-            </svg>
-        </div>
+        <img class="logo-image" src="{{ config('app.url') }}/brand/jipe-farm-campsite-logo.jpeg" alt="Jipe Farm Campsite logo">
         <div class="logo-name">Jipe Farm Campsite</div>
         <div class="logo-tagline">Lake Jipe · Kilimanjaro · Tanzania</div>
     </div>

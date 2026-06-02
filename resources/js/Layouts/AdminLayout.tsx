@@ -1,20 +1,7 @@
 import { useState, ReactNode } from 'react';
 import { Link, usePage, router } from '@inertiajs/react';
 import { PageProps } from '@/types';
-
-const WaveIcon = () => (
-    <svg viewBox="0 0 40 40" fill="none" className="w-full h-full">
-        <circle cx="20" cy="20" r="20" fill="#d4a853"/>
-        {/* Tent body */}
-        <path d="M20 9 L6 29 L34 29 Z" fill="#071510"/>
-        {/* Door arch */}
-        <path d="M15 29 L15 23 Q20 17 25 23 L25 29 Z" fill="#d4a853"/>
-        {/* Ground line */}
-        <line x1="5" y1="31" x2="35" y2="31" stroke="#071510" strokeWidth="1.5" strokeLinecap="round" opacity="0.4"/>
-        {/* Star */}
-        <circle cx="30" cy="13" r="1.3" fill="#071510" opacity="0.65"/>
-    </svg>
-);
+import BrandLogo from '@/Components/BrandLogo';
 
 const navGroups = [
     {
@@ -55,10 +42,10 @@ export default function AdminLayout({ children, title }: { children: ReactNode; 
         <div className="flex flex-col h-full">
             {/* Logo */}
             <div className="flex items-center gap-3 px-5 py-5 border-b border-white/8">
-                <div className="w-9 h-9"><WaveIcon /></div>
+                <BrandLogo className="h-12 w-12 shrink-0" />
                 <div>
                     <p className="text-white font-bold text-sm leading-none">Jipe Farm</p>
-                    <p className="text-[#d4a853] text-[9px] tracking-widest uppercase mt-0.5">Admin Panel</p>
+                    <p className="text-[#f1ce47] text-[9px] tracking-widest uppercase mt-1">Admin Panel</p>
                 </div>
             </div>
 

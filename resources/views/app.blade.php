@@ -7,11 +7,11 @@
         <title inertia>{{ config('app.name', 'Jipe Farm Campsite') }}</title>
 
         <!-- ── Primary SEO ───────────────────────────────────────────────── -->
-        <meta name="description" content="Jipe Farm Campsite — eco-friendly bush camping on the shores of Lake Jipe, Kilimanjaro Region, Tanzania. Canoeing, hiking, milking experiences, bonfire nights, and wildlife adventures near Moshi.">
-        <meta name="keywords" content="Jipe Farm, Jipe Farm Campsite, camping Kilimanjaro, camping Moshi, Lake Jipe camping, bush camping Kilimanjaro, canoeing Kilimanjaro, canoeing Moshi, hiking Kilimanjaro, hiking Moshi, milking Kilimanjaro, milking Moshi, bonfire Kilimanjaro, born fire Kilimanjaro, born fire Moshi, bush camping Tanzania, Tanzania camping, eco camping Tanzania, Kilimanjaro adventure camp, Tanzania farm stay, Lake Jipe Tanzania, birdwatching Kilimanjaro, wildlife Kilimanjaro, safari camp Tanzania, canoe safari Tanzania">
+        <meta name="description" content="Jipe Farm Campsite — eco-friendly farm camping on the shores of Lake Jipe, Kilimanjaro Region, Tanzania. Canoeing, hiking, farm experiences, bonfire nights, and wildlife adventures near Moshi.">
+        <meta name="keywords" content="Jipe Farm, Jipe Farm Campsite, Jipe Farm and Campsite, camping Kilimanjaro, camping Moshi, Lake Jipe camping, bush camping Kilimanjaro, canoeing Kilimanjaro, canoeing Moshi, hiking Kilimanjaro, hiking Moshi, farm campsite Tanzania, farm camping Tanzania, bonfire Kilimanjaro, bush camping Tanzania, Tanzania camping, eco camping Tanzania, Kilimanjaro adventure camp, Tanzania farm stay, Lake Jipe Tanzania, birdwatching Kilimanjaro, wildlife Kilimanjaro, safari camp Tanzania, canoe safari Tanzania">
         <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
         <meta name="author" content="Jipe Farm Campsite">
-        <meta name="theme-color" content="#071510">
+        <meta name="theme-color" content="#2f6f2f">
 
         <!-- ── Geographic / Local SEO ────────────────────────────────────── -->
         <meta name="geo.region" content="TZ-09">
@@ -25,15 +25,15 @@
         <meta property="og:site_name" content="Jipe Farm Campsite">
         <meta property="og:locale" content="en_US">
         <meta property="og:type" content="website">
-        <meta property="og:image" content="{{ asset('Images/Bush Fire.jpg') }}">
-        <meta property="og:image:width" content="1200">
-        <meta property="og:image:height" content="630">
-        <meta property="og:image:alt" content="Bonfire night at Jipe Farm Campsite — Lake Jipe, Tanzania">
+        <meta property="og:image" content="{{ asset('brand/jipe-farm-campsite-logo.jpeg') }}">
+        <meta property="og:image:width" content="465">
+        <meta property="og:image:height" content="477">
+        <meta property="og:image:alt" content="Jipe Farm Campsite tractor logo">
 
         <!-- ── Twitter / X Card (default) ───────────────────────────────── -->
         <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:image" content="{{ asset('Images/Bush Fire.jpg') }}">
-        <meta name="twitter:image:alt" content="Jipe Farm Campsite — Bush Camping near Kilimanjaro, Tanzania">
+        <meta name="twitter:image" content="{{ asset('brand/jipe-farm-campsite-logo.jpeg') }}">
+        <meta name="twitter:image:alt" content="Jipe Farm Campsite tractor logo">
 
         <!-- ── Canonical (fallback — individual pages set their own) ─────── -->
         <link rel="canonical" href="{{ config('app.url') }}">
@@ -47,7 +47,7 @@
                     "@type": ["LodgingBusiness", "TouristAttraction"],
                     "@id": "https://www.lakejipecamp.co.tz/#business",
                     "name": "Jipe Farm Campsite",
-                    "alternateName": ["Jipe Farm", "Lake Jipe Camp", "Jipe Farm Camp Site"],
+                    "alternateName": ["Jipe Farm", "Jipe Farm and Campsite", "Lake Jipe Camp", "Jipe Farm Camp Site"],
                     "description": "Eco-friendly farm campsite on the shores of Lake Jipe in Kilimanjaro Region, Tanzania. Offering bush camping, canoeing, hiking, milking experiences, bonfire nights, birdwatching and wildlife adventures near Moshi.",
                     "url": "https://www.lakejipecamp.co.tz",
                     "email": "info@jipefarmcampsite.com",
@@ -78,7 +78,8 @@
                         { "@type": "LocationFeatureSpecification", "name": "Wildlife Birdwatching", "value": true },
                         { "@type": "LocationFeatureSpecification", "name": "Camel Riding", "value": true }
                     ],
-                    "image": "{{ asset('Images/Bush Fire.jpg') }}",
+                    "logo": "{{ asset('brand/jipe-farm-campsite-logo.jpeg') }}",
+                    "image": "{{ asset('brand/jipe-farm-campsite-logo.jpeg') }}",
                     "priceRange": "$$",
                     "currenciesAccepted": "USD, TZS",
                     "paymentAccepted": "Cash, Mobile Money",
@@ -100,14 +101,12 @@
         </script>
 
         <!-- ── Favicons ─────────────────────────────────────────────────── -->
-        <link rel="icon" href="/favicon.ico" sizes="16x16 32x32">
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml">
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
         <link rel="manifest" href="/site.webmanifest">
         <meta name="msapplication-TileImage" content="/icon-192.png">
-        <meta name="msapplication-TileColor" content="#071510">
+        <meta name="msapplication-TileColor" content="#2f6f2f">
 
         <!-- ── Fonts ─────────────────────────────────────────────────────── -->
         <link rel="preconnect" href="https://fonts.bunny.net">
