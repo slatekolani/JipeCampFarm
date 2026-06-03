@@ -72,19 +72,19 @@ export default function Contact() {
             </Head>
            <div className="relative h-96 lg:h-screen flex items-end overflow-hidden">
                 <img src="/Images/Camel Riding.jpg" alt="About" className="absolute inset-0 w-full h-full object-cover"/>
-                <div className="absolute inset-0 bg-gradient-to-b from-[#071510]/30 via-[#071510]/50 to-[#071510]"/>
+                <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/65 to-black/90"/>
                 <div className="relative z-10 max-w-7xl mx-auto px-5 lg:px-8 pb-14 w-full">
                     <p className="text-[#d4a853] text-xs font-semibold tracking-[0.25em] uppercase mb-3">Get in Touch</p>
                     <h1 className="text-4xl sm:text-6xl font-bold text-white">Contact Us</h1>
                 </div>
             </div>
 
-            <section className="bg-[#071510] py-20">
+            <section className="bg-white py-20">
                 <div className="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-2 gap-12 lg:gap-20">
                     {/* Contact info */}
                     <div>
-                        <h2 className="text-2xl font-bold text-white mb-3">Plan Your Jipe Farm Adventure</h2>
-                        <p className="text-white/55 leading-relaxed mb-10">Whether you want to enquire about availability, customise a package, or simply ask a question — we'd love to hear from you. We respond to all messages within 24 hours.</p>
+                        <h2 className="text-2xl font-bold text-gray-900 mb-3">Plan Your Jipe Farm Adventure</h2>
+                        <p className="text-gray-500 leading-relaxed mb-10">Whether you want to enquire about availability, customise a package, or simply ask a question — we'd love to hear from you. We respond to all messages within 24 hours.</p>
                         <div className="space-y-6">
                             {contacts.map((c) => (
                                 <div key={c.label} className="flex items-start gap-4">
@@ -92,8 +92,8 @@ export default function Contact() {
                                         <svg viewBox="0 0 24 24" fill="none" stroke="#d4a853" strokeWidth={1.5} className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d={c.icon}/></svg>
                                     </div>
                                     <div>
-                                        <p className="text-white/40 text-xs uppercase tracking-wider mb-0.5">{c.label}</p>
-                                        <p className="text-white font-medium">{c.value}</p>
+                                        <p className="text-gray-500 text-xs uppercase tracking-wider mb-0.5">{c.label}</p>
+                                        <p className="text-gray-900 font-medium">{c.value}</p>
                                     </div>
                                 </div>
                             ))}
@@ -101,29 +101,29 @@ export default function Contact() {
                     </div>
 
                     {/* Form */}
-                    <div className="bg-[#0d1f13] border border-white/8 rounded-2xl p-7">
+                    <div className="bg-white border border-gray-200 rounded-2xl p-7">
                         {flash?.success && (
                             <div className="bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-sm px-4 py-3 rounded-xl mb-6">
                                 {flash.success}
                             </div>
                         )}
-                        <h3 className="text-white font-bold text-xl mb-6">Send a Message</h3>
+                        <h3 className="text-gray-900 font-bold text-xl mb-6">Send a Message</h3>
                         <form onSubmit={submit} className="space-y-4">
                             <div className="grid sm:grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-white/50 text-xs uppercase tracking-wider mb-1.5">Your Name *</label>
-                                    <input type="text" value={data.name} onChange={e => setData('name', e.target.value)} className="w-full bg-white/5 border border-white/10 focus:border-[#d4a853]/60 text-white placeholder-white/25 rounded-xl px-4 py-3 text-sm outline-none transition-colors" placeholder="John Doe" required/>
+                                    <label className="block text-gray-600 text-xs uppercase tracking-wider mb-1.5">Your Name *</label>
+                                    <input type="text" value={data.name} onChange={e => setData('name', e.target.value)} className="w-full bg-gray-50 border border-gray-200 focus:border-[#d4a853]/60 text-gray-900 placeholder-gray-400 rounded-xl px-4 py-3 text-sm outline-none transition-colors" placeholder="John Doe" required/>
                                     {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name}</p>}
                                 </div>
                                 <div>
-                                    <label className="block text-white/50 text-xs uppercase tracking-wider mb-1.5">Email *</label>
-                                    <input type="email" value={data.email} onChange={e => setData('email', e.target.value)} className="w-full bg-white/5 border border-white/10 focus:border-[#d4a853]/60 text-white placeholder-white/25 rounded-xl px-4 py-3 text-sm outline-none transition-colors" placeholder="john@example.com" required/>
+                                    <label className="block text-gray-600 text-xs uppercase tracking-wider mb-1.5">Email *</label>
+                                    <input type="email" value={data.email} onChange={e => setData('email', e.target.value)} className="w-full bg-gray-50 border border-gray-200 focus:border-[#d4a853]/60 text-gray-900 placeholder-gray-400 rounded-xl px-4 py-3 text-sm outline-none transition-colors" placeholder="john@example.com" required/>
                                     {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
                                 </div>
                             </div>
                             <div>
-                                    <label className="block text-white/50 text-xs uppercase tracking-wider mb-1.5">Subject</label>
-                                    <select value={data.subject} onChange={e => setData('subject', e.target.value)} className="w-full bg-[#0d1f13] border border-white/10 focus:border-[#d4a853]/60 text-white rounded-xl px-4 py-3 text-sm outline-none transition-colors">
+                                    <label className="block text-gray-600 text-xs uppercase tracking-wider mb-1.5">Subject</label>
+                                    <select value={data.subject} onChange={e => setData('subject', e.target.value)} className="w-full bg-white border border-gray-200 focus:border-[#d4a853]/60 text-gray-900 rounded-xl px-4 py-3 text-sm outline-none transition-colors">
                                         <option value="">Select a topic</option>
                                         <option>Booking Enquiry</option>
                                         <option>Package Information</option>
@@ -132,13 +132,13 @@ export default function Contact() {
                                     </select>
                             </div>
                             <div>
-                                <label className="block text-white/50 text-xs uppercase tracking-wider mb-1.5">Message *</label>
-                                <textarea value={data.message} onChange={e => setData('message', e.target.value)} rows={5} className="w-full bg-white/5 border border-white/10 focus:border-[#d4a853]/60 text-white placeholder-white/25 rounded-xl px-4 py-3 text-sm outline-none transition-colors resize-none" placeholder="Tell us about your travel plans, preferred dates, group size..." required/>
+                                <label className="block text-gray-600 text-xs uppercase tracking-wider mb-1.5">Message *</label>
+                                <textarea value={data.message} onChange={e => setData('message', e.target.value)} rows={5} className="w-full bg-gray-50 border border-gray-200 focus:border-[#d4a853]/60 text-gray-900 placeholder-gray-400 rounded-xl px-4 py-3 text-sm outline-none transition-colors resize-none" placeholder="Tell us about your travel plans, preferred dates, group size..." required/>
                                 {errors.message && <p className="text-red-400 text-xs mt-1">{errors.message}</p>}
                             </div>
                             {/* Deals consent */}
-                            <div className="bg-white/3 border border-white/8 rounded-xl p-4">
-                                <p className="text-white/70 text-sm font-medium mb-3">
+                            <div className="bg-white/3 border border-gray-200 rounded-xl p-4">
+                                <p className="text-gray-600 text-sm font-medium mb-3">
                                     We'd love to send you exclusive deals when they arise — are you in?
                                 </p>
                                 <div className="flex flex-wrap gap-2">
@@ -154,8 +154,8 @@ export default function Contact() {
                                                 data.wants_deals === opt.value
                                                     ? opt.value === 'yes'
                                                         ? 'bg-[#d4a853] border-[#d4a853] text-[#071510]'
-                                                        : 'bg-white/10 border-white/30 text-white'
-                                                    : 'bg-transparent border-white/15 text-white/50 hover:border-white/30 hover:text-white/80'
+                                                        : 'bg-gray-200 border-gray-400 text-gray-900'
+                                                    : 'bg-transparent border-gray-300 text-gray-600 hover:border-gray-400 hover:text-gray-700'
                                             }`}
                                         >
                                             {opt.label}
@@ -171,9 +171,9 @@ export default function Contact() {
                 </div>
             </section>
 
-            <section className="bg-[#071510] border-t border-white/5 pb-20">
+            <section className="bg-white border-t border-gray-100 pb-20">
                 <div className="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-2 gap-10 lg:gap-14">
-                    <div className="overflow-hidden rounded-2xl border border-white/8 bg-[#0d1f13] min-h-[360px]">
+                    <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white min-h-[360px]">
                         <iframe
                             title="Jipe Farm Campsite location"
                             src="https://maps.google.com/maps?q=-3.598951,37.699760&z=15&output=embed"
@@ -184,29 +184,29 @@ export default function Contact() {
                     </div>
                     <div>
                         <p className="text-[#d4a853] text-xs font-semibold tracking-[0.25em] uppercase mb-3">Getting Here</p>
-                        <h2 className="text-2xl font-bold text-white mb-3">Jipe Farm Campsite Location</h2>
-                        <p className="text-white/55 leading-relaxed mb-6">
+                        <h2 className="text-2xl font-bold text-gray-900 mb-3">Jipe Farm Campsite Location</h2>
+                        <p className="text-gray-500 leading-relaxed mb-6">
                             If you decide to come individually, the camp is located here: <a href="https://maps.app.goo.gl/LNkSLU85HYBx9KRg9" target="_blank" rel="noreferrer" className="text-[#d4a853] hover:text-[#c49640]">open location on Google Maps</a>. Total distance is 51km.
                         </p>
 
                         <div className="grid sm:grid-cols-2 gap-4">
-                            <div className="bg-white/3 border border-white/8 rounded-2xl p-5">
-                                <h3 className="text-white font-semibold text-sm mb-4">Public Transportation</h3>
+                            <div className="bg-white/3 border border-gray-200 rounded-2xl p-5">
+                                <h3 className="text-gray-900 font-semibold text-sm mb-4">Public Transportation</h3>
                                 <div className="space-y-3">
                                     {publicTransport.map(item => (
-                                        <div key={item.route} className="flex items-start justify-between gap-3 border-b border-white/5 pb-3 last:border-0 last:pb-0">
-                                            <span className="text-white/55 text-sm leading-snug">{item.route}</span>
+                                        <div key={item.route} className="flex items-start justify-between gap-3 border-b border-gray-100 pb-3 last:border-0 last:pb-0">
+                                            <span className="text-gray-500 text-sm leading-snug">{item.route}</span>
                                             <span className="text-[#d4a853] text-sm font-bold whitespace-nowrap">{item.cost}</span>
                                         </div>
                                     ))}
                                 </div>
                             </div>
-                            <div className="bg-white/3 border border-white/8 rounded-2xl p-5">
-                                <h3 className="text-white font-semibold text-sm mb-4">Bolt Estimates</h3>
+                            <div className="bg-white/3 border border-gray-200 rounded-2xl p-5">
+                                <h3 className="text-gray-900 font-semibold text-sm mb-4">Bolt Estimates</h3>
                                 <div className="space-y-3">
                                     {boltOptions.map(item => (
-                                        <div key={item.type} className="flex items-start justify-between gap-3 border-b border-white/5 pb-3 last:border-0 last:pb-0">
-                                            <span className="text-white/55 text-sm leading-snug">{item.type}</span>
+                                        <div key={item.type} className="flex items-start justify-between gap-3 border-b border-gray-100 pb-3 last:border-0 last:pb-0">
+                                            <span className="text-gray-500 text-sm leading-snug">{item.type}</span>
                                             <span className="text-[#d4a853] text-sm font-bold whitespace-nowrap">{item.cost}</span>
                                         </div>
                                     ))}

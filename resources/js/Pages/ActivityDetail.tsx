@@ -42,7 +42,7 @@ function BookingModal({ activity, onClose }: { activity: Activity; onClose: () =
         post(`/activities/${activity.id}/book`);
     };
 
-    const inputCls = "w-full bg-white/5 border border-white/10 focus:border-[#d4a853]/60 text-white rounded-xl px-4 py-3 text-sm outline-none transition-colors placeholder-white/25";
+    const inputCls = "w-full bg-gray-50 border border-gray-200 focus:border-[#d4a853]/60 text-gray-900 rounded-xl px-4 py-3 text-sm outline-none transition-colors placeholder-gray-400";
 
     return (
         <div
@@ -50,18 +50,18 @@ function BookingModal({ activity, onClose }: { activity: Activity; onClose: () =
             onClick={onClose}
         >
             <div
-                className="relative bg-[#0d1f13] border border-white/10 rounded-2xl w-full max-w-lg my-auto shadow-2xl"
+                className="relative bg-white border border-gray-200 rounded-2xl w-full max-w-lg my-auto shadow-2xl"
                 onClick={e => e.stopPropagation()}
             >
                 {/* Header */}
-                <div className="px-7 pt-7 pb-5 border-b border-white/8">
+                <div className="px-7 pt-7 pb-5 border-b border-gray-200">
                     <div className="flex items-start justify-between gap-4">
                         <div>
                             <p className="text-[#d4a853] text-xs font-bold uppercase tracking-widest mb-1">Activity Booking</p>
-                            <h2 className="text-white font-bold text-xl">{activity.title}</h2>
+                            <h2 className="text-gray-900 font-bold text-xl">{activity.title}</h2>
                             <div className="flex flex-wrap items-center gap-2 mt-1.5">
                                 {activity.duration && (
-                                    <span className="text-white/40 text-xs flex items-center gap-1">
+                                    <span className="text-gray-500 text-xs flex items-center gap-1">
                                         <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                         </svg>
@@ -69,13 +69,13 @@ function BookingModal({ activity, onClose }: { activity: Activity; onClose: () =
                                     </span>
                                 )}
                                 {activity.difficulty && (
-                                    <span className="text-white/40 text-xs">{activity.difficulty}</span>
+                                    <span className="text-gray-500 text-xs">{activity.difficulty}</span>
                                 )}
                             </div>
                         </div>
                         <button
                             onClick={onClose}
-                            className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-white/50 hover:text-white transition-all flex-shrink-0 mt-0.5"
+                            className="w-8 h-8 rounded-full bg-gray-50 hover:bg-gray-100 flex items-center justify-center text-gray-600 hover:text-gray-900 transition-all flex-shrink-0 mt-0.5"
                         >
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -92,9 +92,9 @@ function BookingModal({ activity, onClose }: { activity: Activity; onClose: () =
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
                         </div>
-                        <h3 className="text-white font-bold text-lg mb-2">Booking Received!</h3>
-                        <p className="text-white/55 text-sm leading-relaxed mb-6">
-                            Thank you! We've received your booking for <strong className="text-white">{activity.title}</strong>.
+                        <h3 className="text-gray-900 font-bold text-lg mb-2">Booking Received!</h3>
+                        <p className="text-gray-500 text-sm leading-relaxed mb-6">
+                            Thank you! We've received your booking for <strong className="text-gray-900">{activity.title}</strong>.
                             Our team will get back to you within 24 hours.
                         </p>
                         <button
@@ -106,14 +106,14 @@ function BookingModal({ activity, onClose }: { activity: Activity; onClose: () =
                     </div>
                 ) : (
                     <form onSubmit={submit} className="px-7 py-6 space-y-4">
-                        <p className="text-white/40 text-xs leading-relaxed">
+                        <p className="text-gray-500 text-xs leading-relaxed">
                             No payment required — we'll confirm availability and reach out with details.
                         </p>
 
                         {/* Name + Email */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label className="block text-white/50 text-xs uppercase tracking-wider mb-1.5">Full Name *</label>
+                                <label className="block text-gray-600 text-xs uppercase tracking-wider mb-1.5">Full Name *</label>
                                 <input
                                     type="text"
                                     value={data.name}
@@ -125,7 +125,7 @@ function BookingModal({ activity, onClose }: { activity: Activity; onClose: () =
                                 {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name}</p>}
                             </div>
                             <div>
-                                <label className="block text-white/50 text-xs uppercase tracking-wider mb-1.5">Email Address *</label>
+                                <label className="block text-gray-600 text-xs uppercase tracking-wider mb-1.5">Email Address *</label>
                                 <input
                                     type="email"
                                     value={data.email}
@@ -141,12 +141,12 @@ function BookingModal({ activity, onClose }: { activity: Activity; onClose: () =
                         {/* Group size */}
                         <div className="grid grid-cols-1 gap-4">
                             <div>
-                                <label className="block text-white/50 text-xs uppercase tracking-wider mb-1.5">Group Size *</label>
+                                <label className="block text-gray-600 text-xs uppercase tracking-wider mb-1.5">Group Size *</label>
                                 <div className="flex items-center gap-2">
                                     <button
                                         type="button"
                                         onClick={() => setData('group_size', Math.max(1, data.group_size - 1))}
-                                        className="w-10 h-[46px] flex-shrink-0 bg-white/5 border border-white/10 text-white rounded-xl hover:bg-white/10 transition-colors text-lg font-light"
+                                        className="w-10 h-[46px] flex-shrink-0 bg-gray-50 border border-gray-200 text-gray-900 rounded-xl hover:bg-gray-100 transition-colors text-lg font-light"
                                     >
                                         −
                                     </button>
@@ -162,7 +162,7 @@ function BookingModal({ activity, onClose }: { activity: Activity; onClose: () =
                                     <button
                                         type="button"
                                         onClick={() => setData('group_size', Math.min(200, data.group_size + 1))}
-                                        className="w-10 h-[46px] flex-shrink-0 bg-white/5 border border-white/10 text-white rounded-xl hover:bg-white/10 transition-colors text-lg font-light"
+                                        className="w-10 h-[46px] flex-shrink-0 bg-gray-50 border border-gray-200 text-gray-900 rounded-xl hover:bg-gray-100 transition-colors text-lg font-light"
                                     >
                                         +
                                     </button>
@@ -173,7 +173,7 @@ function BookingModal({ activity, onClose }: { activity: Activity; onClose: () =
 
                         {/* Notes */}
                         <div>
-                            <label className="block text-white/50 text-xs uppercase tracking-wider mb-1.5">Additional Notes</label>
+                            <label className="block text-gray-600 text-xs uppercase tracking-wider mb-1.5">Additional Notes</label>
                             <textarea
                                 value={data.notes}
                                 onChange={e => setData('notes', e.target.value)}
@@ -185,8 +185,8 @@ function BookingModal({ activity, onClose }: { activity: Activity; onClose: () =
                         </div>
 
                         {/* Deals consent */}
-                        <div className="bg-white/3 border border-white/8 rounded-xl p-4">
-                            <p className="text-white/70 text-sm font-medium mb-3">
+                        <div className="bg-white/3 border border-gray-200 rounded-xl p-4">
+                            <p className="text-gray-600 text-sm font-medium mb-3">
                                 We'd love to send you exclusive deals when they arise — are you in?
                             </p>
                             <div className="flex flex-wrap gap-2">
@@ -202,8 +202,8 @@ function BookingModal({ activity, onClose }: { activity: Activity; onClose: () =
                                             data.wants_deals === opt.value
                                                 ? opt.value === 'yes'
                                                     ? 'bg-[#d4a853] border-[#d4a853] text-[#071510]'
-                                                    : 'bg-white/10 border-white/30 text-white'
-                                                : 'bg-transparent border-white/15 text-white/50 hover:border-white/30 hover:text-white/80'
+                                                    : 'bg-gray-100 border-white/30 text-white'
+                                                : 'bg-transparent border-gray-300 text-gray-600 hover:border-white/30 hover:text-gray-700'
                                         }`}
                                     >
                                         {opt.label}
@@ -233,7 +233,7 @@ function BookingModal({ activity, onClose }: { activity: Activity; onClose: () =
 export default function ActivityDetail({ activity, related }: PageProps<{ activity: Activity; related: Activity[] }>) {
     const [showBooking, setShowBooking] = useState(false);
     const { flash } = usePage<PageProps>().props;
-    const diffColor = DIFFICULTY_COLOR[activity.difficulty ?? ''] ?? 'text-white/60 bg-white/5 border-white/10';
+    const diffColor = DIFFICULTY_COLOR[activity.difficulty ?? ''] ?? 'text-gray-500 bg-gray-50 border-gray-200';
 
     useEffect(() => {
         if (flash?.booking_success) setShowBooking(true);
@@ -291,18 +291,18 @@ export default function ActivityDetail({ activity, related }: PageProps<{ activi
                 {activity.image_url ? (
                     <img src={activity.image_url} alt={activity.title} className="absolute inset-0 w-full h-full object-cover" />
                 ) : (
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#071510] to-[#0d2218]" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-black/80 to-black/90" />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#071510] via-[#071510]/50 to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#071510]/70 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/35 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
 
                 <div className="absolute bottom-0 left-0 right-0 px-6 pb-10 md:px-16 md:pb-14 max-w-5xl">
-                    <div className="flex items-center gap-2 text-white/40 text-xs mb-4">
+                    <div className="flex items-center gap-2 text-gray-500 text-xs mb-4">
                         <Link href="/" className="hover:text-[#d4a853] transition-colors">Home</Link>
                         <span>/</span>
                         <Link href="/activities" className="hover:text-[#d4a853] transition-colors">Activities</Link>
                         <span>/</span>
-                        <span className="text-white/60">{activity.title}</span>
+                        <span className="text-gray-500">{activity.title}</span>
                     </div>
 
                     <div className="flex flex-wrap items-center gap-2 mb-4">
@@ -317,7 +317,7 @@ export default function ActivityDetail({ activity, related }: PageProps<{ activi
                             </span>
                         )}
                         {activity.duration && (
-                            <span className="text-xs text-white/50 bg-white/5 border border-white/10 px-3 py-1 rounded-full flex items-center gap-1.5">
+                            <span className="text-xs text-gray-600 bg-gray-50 border border-gray-200 px-3 py-1 rounded-full flex items-center gap-1.5">
                                 <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
@@ -326,7 +326,7 @@ export default function ActivityDetail({ activity, related }: PageProps<{ activi
                         )}
                     </div>
 
-                    <h1 className="text-3xl md:text-5xl font-bold text-white mb-3 leading-tight">{activity.title}</h1>
+                    <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-3 leading-tight">{activity.title}</h1>
                     {activity.tagline && (
                         <p className="text-[#d4a853] text-lg md:text-xl font-medium">{activity.tagline}</p>
                     )}
@@ -334,25 +334,25 @@ export default function ActivityDetail({ activity, related }: PageProps<{ activi
             </div>
 
             {/* Body */}
-            <div className="bg-[#071510]">
+            <div className="bg-white">
                 <div className="max-w-6xl mx-auto px-6 md:px-10 py-14 grid grid-cols-1 lg:grid-cols-3 gap-12">
                     {/* Main content */}
                     <div className="lg:col-span-2 space-y-8">
                         <div>
-                            <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                            <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                                 <span className="w-1 h-5 bg-[#d4a853] rounded-full inline-block" />
                                 Overview
                             </h2>
-                            <p className="text-white/70 leading-relaxed text-[15px]">{activity.description}</p>
+                            <p className="text-gray-600 leading-relaxed text-[15px]">{activity.description}</p>
                         </div>
 
                         {activity.details && (
                             <div>
-                                <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                                <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                                     <span className="w-1 h-5 bg-[#d4a853] rounded-full inline-block" />
                                     What to Expect
                                 </h2>
-                                <div className="text-white/70 leading-relaxed text-[15px] space-y-4">
+                                <div className="text-gray-600 leading-relaxed text-[15px] space-y-4">
                                     {activity.details.split('\n').filter(Boolean).map((para, i) => (
                                         <p key={i}>{para}</p>
                                     ))}
@@ -364,8 +364,8 @@ export default function ActivityDetail({ activity, related }: PageProps<{ activi
                     {/* Sidebar */}
                     <div className="space-y-5">
                         {/* Quick facts */}
-                        <div className="bg-white/3 border border-white/8 rounded-2xl p-6">
-                            <h3 className="text-white font-semibold mb-5 text-sm uppercase tracking-wider">Quick Facts</h3>
+                        <div className="bg-white/3 border border-gray-200 rounded-2xl p-6">
+                            <h3 className="text-gray-900 font-semibold mb-5 text-sm uppercase tracking-wider">Quick Facts</h3>
                             <div className="space-y-4">
                                 {activity.duration && (
                                     <div className="flex items-start gap-3">
@@ -375,8 +375,8 @@ export default function ActivityDetail({ activity, related }: PageProps<{ activi
                                             </svg>
                                         </div>
                                         <div>
-                                            <p className="text-white/30 text-xs mb-0.5">Duration</p>
-                                            <p className="text-white text-sm">{activity.duration}</p>
+                                            <p className="text-gray-400 text-xs mb-0.5">Duration</p>
+                                            <p className="text-gray-900 text-sm">{activity.duration}</p>
                                         </div>
                                     </div>
                                 )}
@@ -388,8 +388,8 @@ export default function ActivityDetail({ activity, related }: PageProps<{ activi
                                             </svg>
                                         </div>
                                         <div>
-                                            <p className="text-white/30 text-xs mb-0.5">Difficulty</p>
-                                            <p className="text-white text-sm">{activity.difficulty}</p>
+                                            <p className="text-gray-400 text-xs mb-0.5">Difficulty</p>
+                                            <p className="text-gray-900 text-sm">{activity.difficulty}</p>
                                         </div>
                                     </div>
                                 )}
@@ -400,8 +400,8 @@ export default function ActivityDetail({ activity, related }: PageProps<{ activi
                                         </svg>
                                     </div>
                                     <div>
-                                        <p className="text-white/30 text-xs mb-0.5">Location</p>
-                                        <p className="text-white text-sm">Lake Jipe, Tanzania</p>
+                                        <p className="text-gray-400 text-xs mb-0.5">Location</p>
+                                        <p className="text-gray-900 text-sm">Lake Jipe, Tanzania</p>
                                     </div>
                                 </div>
                             </div>
@@ -409,8 +409,8 @@ export default function ActivityDetail({ activity, related }: PageProps<{ activi
 
                         {/* CTA */}
                         <div className="bg-gradient-to-br from-[#d4a853]/15 to-[#d4a853]/5 border border-[#d4a853]/20 rounded-2xl p-6 text-center">
-                            <p className="text-white font-semibold mb-1">Ready to Experience This?</p>
-                            <p className="text-white/50 text-xs mb-4">Book as a standalone activity or as part of a package</p>
+                            <p className="text-gray-900 font-semibold mb-1">Ready to Experience This?</p>
+                            <p className="text-gray-600 text-xs mb-4">Book as a standalone activity or as part of a package</p>
                             <button
                                 onClick={() => setShowBooking(true)}
                                 className="block w-full bg-[#d4a853] hover:bg-[#c49640] text-[#071510] font-bold py-3 rounded-xl text-sm transition-all"
@@ -419,7 +419,7 @@ export default function ActivityDetail({ activity, related }: PageProps<{ activi
                             </button>
                             <Link
                                 href="/packages"
-                                className="block w-full mt-2 border border-white/10 hover:border-white/20 text-white/60 hover:text-white py-3 rounded-xl text-sm transition-all"
+                                className="block w-full mt-2 border border-gray-200 hover:border-white/20 text-gray-500 hover:text-gray-900 py-3 rounded-xl text-sm transition-all"
                             >
                                 View Packages
                             </Link>
@@ -430,20 +430,20 @@ export default function ActivityDetail({ activity, related }: PageProps<{ activi
 
                 {/* Related activities */}
                 {related.length > 0 && (
-                    <div className="border-t border-white/5 py-14">
+                    <div className="border-t border-gray-100 py-14">
                         <div className="max-w-6xl mx-auto px-6 md:px-10">
-                            <h2 className="text-xl font-bold text-white mb-8">Other Activities</h2>
+                            <h2 className="text-xl font-bold text-gray-900 mb-8">Other Activities</h2>
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {related.map(a => (
-                                    <Link key={a.id} href={`/activities/${a.id}`} className="group block bg-white/3 border border-white/8 hover:border-[#d4a853]/30 rounded-2xl overflow-hidden transition-all">
+                                    <Link key={a.id} href={`/activities/${a.id}`} className="group block bg-white/3 border border-gray-200 hover:border-[#d4a853]/30 rounded-2xl overflow-hidden transition-all">
                                         <div className="h-44 overflow-hidden bg-[#0d2218]">
                                             {a.image_url && (
                                                 <img src={a.image_url} alt={a.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                                             )}
                                         </div>
                                         <div className="p-4">
-                                            <h3 className="text-white font-semibold text-sm mb-1">{a.title}</h3>
-                                            {a.duration && <p className="text-white/40 text-xs">{a.duration}</p>}
+                                            <h3 className="text-gray-900 font-semibold text-sm mb-1">{a.title}</h3>
+                                            {a.duration && <p className="text-gray-500 text-xs">{a.duration}</p>}
                                         </div>
                                     </Link>
                                 ))}
@@ -453,7 +453,7 @@ export default function ActivityDetail({ activity, related }: PageProps<{ activi
                 )}
 
                 <div className="pb-14 text-center">
-                    <Link href="/activities" className="inline-flex items-center gap-2 text-white/40 hover:text-[#d4a853] text-sm transition-colors">
+                    <Link href="/activities" className="inline-flex items-center gap-2 text-gray-500 hover:text-[#d4a853] text-sm transition-colors">
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                         </svg>

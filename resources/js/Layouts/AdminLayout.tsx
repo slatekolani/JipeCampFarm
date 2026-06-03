@@ -41,10 +41,10 @@ export default function AdminLayout({ children, title }: { children: ReactNode; 
     const SidebarContent = () => (
         <div className="flex flex-col h-full">
             {/* Logo */}
-            <div className="flex items-center gap-3 px-5 py-5 border-b border-white/8">
+            <div className="flex items-center gap-3 px-5 py-5 border-b border-gray-200">
                 <BrandLogo className="h-12 w-12 shrink-0" />
                 <div>
-                    <p className="text-white font-bold text-sm leading-none">Jipe Farm</p>
+                    <p className="text-gray-900 font-bold text-sm leading-none">Jipe Farm</p>
                     <p className="text-[#f1ce47] text-[9px] tracking-widest uppercase mt-1">Admin Panel</p>
                 </div>
             </div>
@@ -53,7 +53,7 @@ export default function AdminLayout({ children, title }: { children: ReactNode; 
             <nav className="flex-1 overflow-y-auto py-4 px-3">
                 {navGroups.map((group) => (
                     <div key={group.label} className="mb-6">
-                        <p className="text-white/30 text-[10px] font-semibold tracking-widest uppercase px-3 mb-2">{group.label}</p>
+                        <p className="text-gray-400 text-[10px] font-semibold tracking-widest uppercase px-3 mb-2">{group.label}</p>
                         {group.items.map((item) => {
                             const active = currentPath === item.href || currentPath.startsWith(item.href + '/');
                             return (
@@ -63,7 +63,7 @@ export default function AdminLayout({ children, title }: { children: ReactNode; 
                                     className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium mb-0.5 transition-all duration-150 ${
                                         active
                                             ? 'bg-[#d4a853]/15 text-[#d4a853]'
-                                            : 'text-white/60 hover:text-white hover:bg-white/5'
+                                            : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
                                     }`}
                                 >
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-4.5 h-4.5 shrink-0 w-5 h-5">
@@ -78,21 +78,21 @@ export default function AdminLayout({ children, title }: { children: ReactNode; 
             </nav>
 
             {/* User */}
-            <div className="border-t border-white/8 px-4 py-4">
+            <div className="border-t border-gray-200 px-4 py-4">
                 <div className="flex items-center gap-3 mb-3">
                     <div className="w-8 h-8 rounded-full bg-[#d4a853]/20 flex items-center justify-center text-[#d4a853] font-bold text-sm">
                         {auth.user.name[0]}
                     </div>
                     <div className="flex-1 min-w-0">
-                        <p className="text-white text-sm font-medium truncate">{auth.user.name}</p>
-                        <p className="text-white/40 text-xs truncate">{auth.user.email}</p>
+                        <p className="text-gray-900 text-sm font-medium truncate">{auth.user.name}</p>
+                        <p className="text-gray-500 text-xs truncate">{auth.user.email}</p>
                     </div>
                 </div>
                 <div className="flex gap-2">
-                    <Link href="/" className="flex-1 text-center text-white/50 hover:text-white text-xs py-1.5 rounded-lg border border-white/10 hover:border-white/20 transition-colors">
+                    <Link href="/" className="flex-1 text-center text-gray-500 hover:text-gray-900 text-xs py-1.5 rounded-lg border border-gray-300 hover:border-gray-400 transition-colors">
                         View Site
                     </Link>
-                    <button onClick={logout} className="flex-1 text-center text-white/50 hover:text-red-400 text-xs py-1.5 rounded-lg border border-white/10 hover:border-red-400/30 transition-colors">
+                    <button onClick={logout} className="flex-1 text-center text-gray-500 hover:text-red-500 text-xs py-1.5 rounded-lg border border-gray-300 hover:border-red-400/50 transition-colors">
                         Logout
                     </button>
                 </div>
@@ -101,9 +101,9 @@ export default function AdminLayout({ children, title }: { children: ReactNode; 
     );
 
     return (
-        <div className="min-h-screen bg-[#040e08] flex">
+        <div className="min-h-screen bg-gray-50 flex">
             {/* Desktop sidebar */}
-            <aside className="hidden lg:flex flex-col w-60 bg-[#071510] border-r border-white/8 fixed inset-y-0 left-0 z-40">
+            <aside className="hidden lg:flex flex-col w-60 bg-white border-r border-gray-200 fixed inset-y-0 left-0 z-40">
                 <SidebarContent />
             </aside>
 
@@ -111,7 +111,7 @@ export default function AdminLayout({ children, title }: { children: ReactNode; 
             {sidebarOpen && (
                 <div className="lg:hidden fixed inset-0 z-50 flex">
                     <div className="fixed inset-0 bg-black/60" onClick={() => setSidebarOpen(false)} />
-                    <aside className="relative w-60 bg-[#071510] border-r border-white/8 flex flex-col">
+                    <aside className="relative w-60 bg-white border-r border-gray-200 flex flex-col">
                         <SidebarContent />
                     </aside>
                 </div>
@@ -120,14 +120,14 @@ export default function AdminLayout({ children, title }: { children: ReactNode; 
             {/* Main content */}
             <div className="flex-1 lg:ml-60 flex flex-col min-h-screen">
                 {/* Top bar */}
-                <header className="sticky top-0 z-30 bg-[#071510]/90 backdrop-blur-sm border-b border-white/8 px-5 lg:px-8 h-14 flex items-center justify-between">
+                <header className="sticky top-0 z-30 bg-white/90 backdrop-blur-sm border-b border-gray-200 px-5 lg:px-8 h-14 flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                        <button onClick={() => setSidebarOpen(true)} className="lg:hidden text-white/60 hover:text-white p-1">
+                        <button onClick={() => setSidebarOpen(true)} className="lg:hidden text-gray-500 hover:text-gray-900 p-1">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-5 h-5">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
                             </svg>
                         </button>
-                        {title && <h1 className="text-white font-semibold text-sm">{title}</h1>}
+                        {title && <h1 className="text-gray-900 font-semibold text-sm">{title}</h1>}
                     </div>
                     {flash?.success && (
                         <div className="bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-xs px-4 py-2 rounded-lg">

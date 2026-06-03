@@ -37,7 +37,7 @@ const campContacts = [
 function DropdownMenu({ items, visible }: { items: { label: string; href: string; desc: string }[]; visible: boolean }) {
     return (
         <div
-            className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-60 bg-[#0d1f13] border border-white/10 rounded-xl shadow-2xl shadow-black/40 overflow-hidden z-50 transition-all duration-200"
+            className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-60 bg-white border border-gray-200 rounded-xl shadow-xl shadow-gray-200/60 overflow-hidden z-50 transition-all duration-200"
             style={{
                 opacity: visible ? 1 : 0,
                 pointerEvents: visible ? 'auto' : 'none',
@@ -48,10 +48,10 @@ function DropdownMenu({ items, visible }: { items: { label: string; href: string
                 <Link
                     key={item.href}
                     href={item.href}
-                    className="flex flex-col px-5 py-4 hover:bg-[#d4a853]/10 transition-colors border-b border-white/5 last:border-0 group"
+                    className="flex flex-col px-5 py-4 hover:bg-[#d4a853]/10 transition-colors border-b border-gray-100 last:border-0 group"
                 >
-                    <span className="text-white font-semibold text-sm group-hover:text-[#d4a853] transition-colors">{item.label}</span>
-                    <span className="text-white/40 text-xs mt-0.5">{item.desc}</span>
+                    <span className="text-gray-900 font-semibold text-sm group-hover:text-[#d4a853] transition-colors">{item.label}</span>
+                    <span className="text-gray-500 text-xs mt-0.5">{item.desc}</span>
                 </Link>
             ))}
         </div>
@@ -86,7 +86,7 @@ function SubscribeModal({ onClose }: { onClose: () => void }) {
         post('/subscribe', { onSuccess: () => { reset(); } });
     };
 
-    const inputClass = "w-full bg-white/5 border border-white/15 rounded-lg px-4 py-2.5 text-white placeholder-white/30 text-sm focus:outline-none focus:border-[#d4a853]/60 focus:ring-1 focus:ring-[#d4a853]/30 transition";
+    const inputClass = "w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:border-[#d4a853]/60 focus:ring-1 focus:ring-[#d4a853]/30 transition";
 
     return (
         <div
@@ -94,7 +94,7 @@ function SubscribeModal({ onClose }: { onClose: () => void }) {
             onClick={handleBackdrop}
             className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
         >
-            <div className="relative w-full max-w-md bg-[#0d1f13] border border-white/10 rounded-2xl shadow-2xl shadow-black/60 overflow-hidden">
+            <div className="relative w-full max-w-md bg-white border border-gray-200 rounded-2xl shadow-2xl shadow-gray-200/60 overflow-hidden">
                 {/* Decorative top strip */}
                 <div className="h-1 w-full bg-gradient-to-r from-[#d4a853] via-[#e8c170] to-[#d4a853]" />
 
@@ -102,7 +102,7 @@ function SubscribeModal({ onClose }: { onClose: () => void }) {
                     {/* Close */}
                     <button
                         onClick={onClose}
-                        className="absolute top-5 right-5 text-white/40 hover:text-white transition-colors"
+                        className="absolute top-5 right-5 text-gray-400 hover:text-gray-700 transition-colors"
                         aria-label="Close"
                     >
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-5 h-5">
@@ -118,8 +118,8 @@ function SubscribeModal({ onClose }: { onClose: () => void }) {
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
                                 </svg>
                             </div>
-                            <h3 className="text-white font-bold text-xl mb-2">You're in!</h3>
-                            <p className="text-white/55 text-sm leading-relaxed">
+                            <h3 className="text-gray-900 font-bold text-xl mb-2">You're in!</h3>
+                            <p className="text-gray-500 text-sm leading-relaxed">
                                 Welcome to the Jipe Farm Campsite inner circle. Expect the good stuff — deals, new experiences, and a little wilderness magic in your inbox (or messages).
                             </p>
                             <button
@@ -137,19 +137,19 @@ function SubscribeModal({ onClose }: { onClose: () => void }) {
                                     <BrandLogo className="w-9 h-9 shrink-0" />
                                     <span className="text-[#d4a853] text-xs font-semibold tracking-[0.2em] uppercase">Jipe Farm Updates</span>
                                 </div>
-                                <h2 className="text-white font-bold text-2xl leading-snug mb-2">
+                                <h2 className="text-gray-900 font-bold text-2xl leading-snug mb-2">
                                     Stay in the loop
                                 </h2>
-                                <p className="text-white/50 text-sm leading-relaxed">
+                                <p className="text-gray-500 text-sm leading-relaxed">
                                     We want to send you interesting deals when they come up — not bad to subscribe.
                                     You are the final say to buy into the idea or not.{' '}
-                                    <span className="text-white/70">Subscribe for updates of best experience.</span>
+                                    <span className="text-gray-700">Subscribe for updates of best experience.</span>
                                 </p>
                             </div>
 
                             {/* Name */}
                             <div>
-                                <label className="block text-white/60 text-xs font-medium mb-1.5">Your name</label>
+                                <label className="block text-gray-600 text-xs font-medium mb-1.5">Your name</label>
                                 <input
                                     type="text"
                                     className={inputClass}
@@ -170,14 +170,14 @@ function SubscribeModal({ onClose }: { onClose: () => void }) {
                                         className={`flex flex-col items-start p-4 rounded-xl border transition-all ${
                                             data.type === 'sms'
                                                 ? 'border-[#d4a853] bg-[#d4a853]/10'
-                                                : 'border-white/10 bg-white/3 hover:border-white/25'
+                                                : 'border-gray-200 bg-gray-50 hover:border-gray-300'
                                         }`}
                                     >
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className={`w-5 h-5 mb-2 ${data.type === 'sms' ? 'text-[#d4a853]' : 'text-white/40'}`}>
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className={`w-5 h-5 mb-2 ${data.type === 'sms' ? 'text-[#d4a853]' : 'text-gray-400'}`}>
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18h3"/>
                                         </svg>
-                                        <span className={`font-bold text-sm ${data.type === 'sms' ? 'text-[#d4a853]' : 'text-white/70'}`}>SMS</span>
-                                        <span className="text-white/35 text-[11px] mt-0.5 leading-tight">Residents &amp; visitors in Tanzania</span>
+                                        <span className={`font-bold text-sm ${data.type === 'sms' ? 'text-[#d4a853]' : 'text-gray-700'}`}>SMS</span>
+                                        <span className="text-gray-500 text-[11px] mt-0.5 leading-tight">Residents &amp; visitors in Tanzania</span>
                                     </button>
                                     <button
                                         type="button"
@@ -185,14 +185,14 @@ function SubscribeModal({ onClose }: { onClose: () => void }) {
                                         className={`flex flex-col items-start p-4 rounded-xl border transition-all ${
                                             data.type === 'email'
                                                 ? 'border-[#d4a853] bg-[#d4a853]/10'
-                                                : 'border-white/10 bg-white/3 hover:border-white/25'
+                                                : 'border-gray-200 bg-gray-50 hover:border-gray-300'
                                         }`}
                                     >
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className={`w-5 h-5 mb-2 ${data.type === 'email' ? 'text-[#d4a853]' : 'text-white/40'}`}>
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className={`w-5 h-5 mb-2 ${data.type === 'email' ? 'text-[#d4a853]' : 'text-gray-400'}`}>
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
                                         </svg>
-                                        <span className={`font-bold text-sm ${data.type === 'email' ? 'text-[#d4a853]' : 'text-white/70'}`}>Email</span>
-                                        <span className="text-white/35 text-[11px] mt-0.5 leading-tight">International visitors worldwide</span>
+                                        <span className={`font-bold text-sm ${data.type === 'email' ? 'text-[#d4a853]' : 'text-gray-700'}`}>Email</span>
+                                        <span className="text-gray-500 text-[11px] mt-0.5 leading-tight">International visitors worldwide</span>
                                     </button>
                                 </div>
                                 {errors.type && <p className="text-red-400 text-xs mt-1">{errors.type}</p>}
@@ -202,7 +202,7 @@ function SubscribeModal({ onClose }: { onClose: () => void }) {
                             {data.type === 'sms' && (
                                 <>
                                     <div>
-                                        <label className="block text-white/60 text-xs font-medium mb-1.5">Who are you?</label>
+                                        <label className="block text-gray-600 text-xs font-medium mb-1.5">Who are you?</label>
                                         <select
                                             className={inputClass + ' appearance-none'}
                                             value={data.subscriber_type}
@@ -215,7 +215,7 @@ function SubscribeModal({ onClose }: { onClose: () => void }) {
                                         {errors.subscriber_type && <p className="text-red-400 text-xs mt-1">{errors.subscriber_type}</p>}
                                     </div>
                                     <div>
-                                        <label className="block text-white/60 text-xs font-medium mb-1.5">Phone number</label>
+                                        <label className="block text-gray-600 text-xs font-medium mb-1.5">Phone number</label>
                                         <input
                                             type="tel"
                                             className={inputClass}
@@ -232,7 +232,7 @@ function SubscribeModal({ onClose }: { onClose: () => void }) {
                             {data.type === 'email' && (
                                 <>
                                     <div>
-                                        <label className="block text-white/60 text-xs font-medium mb-1.5">Where are you from?</label>
+                                        <label className="block text-gray-600 text-xs font-medium mb-1.5">Where are you from?</label>
                                         <select
                                             className={inputClass + ' appearance-none'}
                                             value={data.subscriber_type}
@@ -246,7 +246,7 @@ function SubscribeModal({ onClose }: { onClose: () => void }) {
                                         {errors.subscriber_type && <p className="text-red-400 text-xs mt-1">{errors.subscriber_type}</p>}
                                     </div>
                                     <div>
-                                        <label className="block text-white/60 text-xs font-medium mb-1.5">Email address</label>
+                                        <label className="block text-gray-600 text-xs font-medium mb-1.5">Email address</label>
                                         <input
                                             type="email"
                                             className={inputClass}
@@ -268,7 +268,7 @@ function SubscribeModal({ onClose }: { onClose: () => void }) {
                                 {processing ? 'Subscribing…' : "Subscribe — I'm in!"}
                             </button>
 
-                            <p className="text-white/25 text-[11px] text-center leading-relaxed">
+                            <p className="text-gray-400 text-[11px] text-center leading-relaxed">
                                 No spam, ever. Unsubscribe anytime. You stay in control.
                             </p>
                         </form>
@@ -280,7 +280,7 @@ function SubscribeModal({ onClose }: { onClose: () => void }) {
 }
 
 // ── Layout ─────────────────────────────────────────────────────────────────────
-export default function PublicLayout({ children, transparent = false }: { children: ReactNode; transparent?: boolean }) {
+export default function PublicLayout({ children, transparent = true }: { children: ReactNode; transparent?: boolean }) {
     const { auth } = usePage<PageProps>().props;
     const [scrolled, setScrolled] = useState(!transparent);
     const [mobileOpen, setMobileOpen] = useState(false);
@@ -291,9 +291,15 @@ export default function PublicLayout({ children, transparent = false }: { childr
 
     useEffect(() => {
         if (!transparent) return;
-        const onScroll = () => setScrolled(window.scrollY > 60);
-        window.addEventListener('scroll', onScroll, { passive: true });
-        return () => window.removeEventListener('scroll', onScroll);
+        const update = () => {
+            const hero = document.querySelector('main')?.firstElementChild as HTMLElement | null;
+            if (!hero) { setScrolled(window.scrollY > 80); return; }
+            // Navbar is ~80px tall — go dark when the hero's bottom edge reaches the navbar
+            setScrolled(hero.getBoundingClientRect().bottom < 80);
+        };
+        update();
+        window.addEventListener('scroll', update, { passive: true });
+        return () => window.removeEventListener('scroll', update);
     }, [transparent]);
 
     // Prevent body scroll when modal open
@@ -312,12 +318,12 @@ export default function PublicLayout({ children, transparent = false }: { childr
     };
 
     return (
-        <div className="min-h-screen bg-[#071510] text-white">
+        <div className="min-h-screen bg-white text-gray-900">
             {/* Navbar */}
             <nav
                 className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
                     scrolled
-                        ? 'bg-[#071510]/97 backdrop-blur-xl shadow-xl shadow-black/30'
+                        ? 'bg-white/97 backdrop-blur-xl shadow-sm border-b border-gray-100'
                         : 'bg-gradient-to-b from-black/60 to-transparent'
                 }`}
             >
@@ -327,7 +333,7 @@ export default function PublicLayout({ children, transparent = false }: { childr
                         <Link href="/" className="flex items-center gap-3 shrink-0 min-w-0">
                             <BrandLogo className="h-14 w-14 sm:h-16 sm:w-16 shrink-0" />
                             <div>
-                                <p className="text-white font-bold text-base sm:text-lg leading-none tracking-wide">Jipe Farm</p>
+                                <p className={`font-bold text-base sm:text-lg leading-none tracking-wide ${scrolled ? 'text-gray-900' : 'text-white'}`}>Jipe Farm</p>
                                 <p className="text-[#f1ce47] text-[9px] sm:text-[10px] tracking-[0.2em] uppercase mt-1">Farm &amp; Campsite</p>
                             </div>
                         </Link>
@@ -345,8 +351,10 @@ export default function PublicLayout({ children, transparent = false }: { childr
                                         <button
                                             className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-lg ${
                                                 hoveredDropdown === item.label
-                                                    ? 'text-[#d4a853] bg-white/5'
-                                                    : 'text-white/75 hover:text-[#d4a853] hover:bg-white/5'
+                                                    ? 'text-[#d4a853] bg-black/5'
+                                                    : scrolled
+                                                        ? 'text-gray-700 hover:text-[#d4a853] hover:bg-black/5'
+                                                        : 'text-white/75 hover:text-[#d4a853] hover:bg-white/5'
                                             }`}
                                         >
                                             {item.label}
@@ -357,7 +365,7 @@ export default function PublicLayout({ children, transparent = false }: { childr
                                     ) : (
                                         <Link
                                             href={item.href!}
-                                            className="flex items-center px-4 py-2 text-sm font-medium text-white/75 hover:text-[#d4a853] hover:bg-white/5 rounded-lg transition-colors duration-200"
+                                            className={`flex items-center px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200 ${scrolled ? 'text-gray-700 hover:text-[#d4a853] hover:bg-black/5' : 'text-white/75 hover:text-[#d4a853] hover:bg-white/5'}`}
                                         >
                                             {item.label}
                                         </Link>
@@ -381,7 +389,7 @@ export default function PublicLayout({ children, transparent = false }: { childr
 
                             {/* Only show admin link when already logged in — desktop only */}
                             {auth.user && (
-                                <Link href="/admin" className="hidden lg:block text-white/50 hover:text-white text-xs font-medium px-3 py-2 transition-colors tracking-wide">
+                                <Link href="/admin" className={`hidden lg:block text-xs font-medium px-3 py-2 transition-colors tracking-wide ${scrolled ? 'text-gray-500 hover:text-gray-900' : 'text-white/50 hover:text-white'}`}>
                                     Dashboard
                                 </Link>
                             )}
@@ -394,7 +402,7 @@ export default function PublicLayout({ children, transparent = false }: { childr
                             </Link>
 
                             {/* Mobile toggle */}
-                            <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden p-2 text-white" aria-label="Toggle menu">
+                            <button onClick={() => setMobileOpen(!mobileOpen)} className={`lg:hidden p-2 ${scrolled ? 'text-gray-700' : 'text-white'}`} aria-label="Toggle menu">
                                 {mobileOpen
                                     ? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
                                     : <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
@@ -405,22 +413,22 @@ export default function PublicLayout({ children, transparent = false }: { childr
 
                     {/* Mobile menu */}
                     {mobileOpen && (
-                        <div className="lg:hidden bg-[#071510]/98 backdrop-blur-xl border-t border-white/10 pb-5">
+                        <div className="lg:hidden bg-white border-t border-gray-100 pb-5">
                             {navItems.map((item) => (
                                 <div key={item.label}>
                                     {item.children ? (
                                         <>
                                             <button
                                                 onClick={() => setMobileExpanded(mobileExpanded === item.label ? null : item.label)}
-                                                className="w-full flex items-center justify-between px-5 py-3.5 text-white/80 font-medium text-base"
+                                                className="w-full flex items-center justify-between px-5 py-3.5 text-gray-700 font-medium text-base"
                                             >
                                                 {item.label}
                                                 <span className={`transition-transform ${mobileExpanded === item.label ? 'rotate-180' : ''}`}><ChevronDown /></span>
                                             </button>
                                             {mobileExpanded === item.label && (
-                                                <div className="bg-white/5 border-y border-white/5">
+                                                <div className="bg-gray-50 border-y border-gray-100">
                                                     {item.children.map(child => (
-                                                        <Link key={child.href} href={child.href} onClick={() => setMobileOpen(false)} className="block px-8 py-3 text-white/70 hover:text-[#d4a853] text-sm transition-colors">
+                                                        <Link key={child.href} href={child.href} onClick={() => setMobileOpen(false)} className="block px-8 py-3 text-gray-600 hover:text-[#d4a853] text-sm transition-colors">
                                                             {child.label}
                                                         </Link>
                                                     ))}
@@ -428,15 +436,15 @@ export default function PublicLayout({ children, transparent = false }: { childr
                                             )}
                                         </>
                                     ) : (
-                                        <Link href={item.href!} onClick={() => setMobileOpen(false)} className="block px-5 py-3.5 text-white/80 font-medium text-base hover:text-[#d4a853] transition-colors">
+                                        <Link href={item.href!} onClick={() => setMobileOpen(false)} className="block px-5 py-3.5 text-gray-700 font-medium text-base hover:text-[#d4a853] transition-colors">
                                             {item.label}
                                         </Link>
                                     )}
                                 </div>
                             ))}
-                            <div className="border-t border-white/10 mt-3 pt-4 px-5 flex flex-col gap-3">
+                            <div className="border-t border-gray-100 mt-3 pt-4 px-5 flex flex-col gap-3">
                                 {auth.user && (
-                                    <Link href="/admin" onClick={() => setMobileOpen(false)} className="text-center text-white/50 text-sm py-2">
+                                    <Link href="/admin" onClick={() => setMobileOpen(false)} className="text-center text-gray-500 text-sm py-2">
                                         Admin Dashboard
                                     </Link>
                                 )}
@@ -456,42 +464,42 @@ export default function PublicLayout({ children, transparent = false }: { childr
             <main>{children}</main>
 
             {/* Footer */}
-            <footer className="bg-[#040e08] border-t border-white/8 pt-16 pb-8">
+            <footer className="bg-gray-50 border-t border-gray-200 pt-16 pb-8">
                 <div className="max-w-7xl mx-auto px-5 lg:px-8">
                     <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-10 mb-14">
                         <div className="lg:col-span-2">
                             <div className="flex items-center gap-3 mb-5">
                                 <BrandLogo className="h-16 w-16 shrink-0" />
                                 <div>
-                                    <p className="text-white font-bold text-lg leading-none">Jipe Farm Campsite</p>
+                                    <p className="text-gray-900 font-bold text-lg leading-none">Jipe Farm Campsite</p>
                                     <p className="text-[#f1ce47] text-[10px] tracking-[0.2em] uppercase mt-1">Lake Jipe · Tanzania</p>
                                 </div>
                             </div>
-                            <p className="text-white/45 text-sm leading-relaxed max-w-xs">
+                            <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
                                 An eco-friendly farm campsite on the shores of Lake Jipe in northern Tanzania.
                                 Unforgettable experiences. Untouched nature. International standard.
                             </p>
-                            <p className="flex items-center gap-2 mt-5 text-white/45 text-sm">
+                            <p className="flex items-center gap-2 mt-5 text-gray-500 text-sm">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-4 h-4 shrink-0"><path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
                                 Kilimanjaro Region, Tanzania
                             </p>
                         </div>
                         <div>
-                            <p className="text-white font-semibold text-sm mb-5 tracking-wide">Explore</p>
+                            <p className="text-gray-900 font-semibold text-sm mb-5 tracking-wide">Explore</p>
                             <ul className="space-y-3">
                                 {[['About', '/about'], ['Activities', '/activities'], ['Tour Packages', '/packages'], ['Gallery', '/gallery'], ['Contact', '/contact']].map(([l, h]) => (
-                                    <li key={h}><Link href={h} className="text-white/45 hover:text-[#d4a853] text-sm transition-colors">{l}</Link></li>
+                                    <li key={h}><Link href={h} className="text-gray-500 hover:text-[#d4a853] text-sm transition-colors">{l}</Link></li>
                                 ))}
                             </ul>
                         </div>
                         <div>
-                            <p className="text-white font-semibold text-sm mb-5 tracking-wide">Contact Us</p>
-                            <ul className="space-y-3 text-white/45 text-sm">
+                            <p className="text-gray-900 font-semibold text-sm mb-5 tracking-wide">Contact Us</p>
+                            <ul className="space-y-3 text-gray-500 text-sm">
                                 <li>info@jipefarmcampsite.com</li>
                                 {campContacts.map(contact => (
                                     <li key={contact.phone}>
                                         <a href={`tel:${contact.phone}`} className="group flex flex-col gap-0.5 hover:text-[#d4a853] transition-colors">
-                                            <span className="text-white/55 group-hover:text-[#d4a853]">{contact.name}</span>
+                                            <span className="text-gray-600 group-hover:text-[#d4a853]">{contact.name}</span>
                                             <span>{contact.phone}</span>
                                         </a>
                                     </li>
@@ -499,8 +507,8 @@ export default function PublicLayout({ children, transparent = false }: { childr
                             </ul>
                         </div>
                         <div className="sm:col-span-2 lg:col-span-1">
-                            <p className="text-white font-semibold text-sm mb-5 tracking-wide">Find Us</p>
-                            <div className="overflow-hidden rounded-xl border border-white/10 bg-[#0d1f13] h-44">
+                            <p className="text-gray-900 font-semibold text-sm mb-5 tracking-wide">Find Us</p>
+                            <div className="overflow-hidden rounded-xl border border-gray-200 bg-gray-100 h-44">
                                 <iframe
                                     title="Jipe Farm Campsite footer location"
                                     src="https://maps.google.com/maps?q=-3.598951,37.699760&z=15&output=embed"
@@ -514,11 +522,11 @@ export default function PublicLayout({ children, transparent = false }: { childr
                             </a>
                         </div>
                     </div>
-                    <div className="border-t border-white/8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-white/30 text-xs">
+                    <div className="border-t border-gray-200 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-gray-400 text-xs">
                         <p>© {new Date().getFullYear()} Jipe Farm Campsite, Tanzania. All rights reserved.</p>
                         <div className="flex gap-5">
-                            <a href="#" className="hover:text-white/60 transition-colors">Privacy Policy</a>
-                            <a href="#" className="hover:text-white/60 transition-colors">Terms of Service</a>
+                            <a href="#" className="hover:text-gray-700 transition-colors">Privacy Policy</a>
+                            <a href="#" className="hover:text-gray-700 transition-colors">Terms of Service</a>
                         </div>
                     </div>
                 </div>

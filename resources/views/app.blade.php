@@ -13,6 +13,7 @@
         <meta name="author" content="Jipe Farm Campsite">
         <meta name="theme-color" content="#2f6f2f">
 
+        
         <!-- ── Geographic / Local SEO ────────────────────────────────────── -->
         <meta name="geo.region" content="TZ-09">
         <meta name="geo.placename" content="Lake Jipe, Kilimanjaro Region, Tanzania">

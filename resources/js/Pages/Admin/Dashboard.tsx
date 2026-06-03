@@ -26,23 +26,23 @@ export default function Dashboard({ stats, recentMessages }: PageProps<{ stats: 
             <Head title="Dashboard — Admin"/>
             <div className="mb-8">
                 <h1 className="text-2xl font-bold text-white">Welcome back</h1>
-                <p className="text-white/45 text-sm mt-1">Here's an overview of your Jipe Farm Campsite website.</p>
+                <p className="text-gray-500 text-sm mt-1">Here's an overview of your Jipe Farm Campsite website.</p>
             </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
                 {cards.map((card) => (
-                    <Link key={card.label} href={card.href} className="group relative bg-[#071510] border border-white/8 rounded-2xl p-6 hover:border-[#d4a853]/30 transition-all hover:-translate-y-0.5 overflow-hidden">
+                    <Link key={card.label} href={card.href} className="group relative bg-white border border-gray-200 rounded-2xl p-6 hover:border-[#d4a853]/30 transition-all hover:-translate-y-0.5 overflow-hidden">
                         <div className={`absolute inset-0 bg-gradient-to-br ${card.color} opacity-0 group-hover:opacity-100 transition-opacity`}/>
                         <div className="relative z-10 flex items-start justify-between">
                             <div>
-                                <p className="text-white/50 text-sm mb-2">{card.label}</p>
+                                <p className="text-gray-600 text-sm mb-2">{card.label}</p>
                                 <p className="text-white font-bold text-3xl">{card.value}</p>
                                 {(card as any).badge && (
                                     <span className="inline-block mt-2 bg-orange-500/20 text-orange-400 text-xs px-2 py-0.5 rounded-full">{(card as any).badge}</span>
                                 )}
                             </div>
                             <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center group-hover:bg-[#d4a853]/15 transition-colors">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-5 h-5 text-white/40 group-hover:text-[#d4a853] transition-colors">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-5 h-5 text-gray-500 group-hover:text-[#d4a853] transition-colors">
                                     <path strokeLinecap="round" strokeLinejoin="round" d={card.icon}/>
                                 </svg>
                             </div>
@@ -52,25 +52,25 @@ export default function Dashboard({ stats, recentMessages }: PageProps<{ stats: 
             </div>
 
             {/* Recent messages */}
-            <div className="bg-[#071510] border border-white/8 rounded-2xl overflow-hidden">
-                <div className="flex items-center justify-between px-6 py-4 border-b border-white/8">
+            <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden">
+                <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
                     <h2 className="text-white font-semibold">Recent Messages</h2>
                     <Link href="/admin/messages" className="text-[#d4a853] text-xs hover:underline">View all</Link>
                 </div>
                 {recentMessages.length === 0 ? (
-                    <p className="text-white/40 text-sm text-center py-10">No messages yet.</p>
+                    <p className="text-gray-500 text-sm text-center py-10">No messages yet.</p>
                 ) : (
-                    <div className="divide-y divide-white/5">
+                    <div className="divide-y divide-gray-100">
                         {recentMessages.map((msg) => (
-                            <Link key={msg.id} href={`/admin/messages/${msg.id}`} className="flex items-start gap-4 px-6 py-4 hover:bg-white/3 transition-colors group">
+                            <Link key={msg.id} href={`/admin/messages/${msg.id}`} className="flex items-start gap-4 px-6 py-4 hover:bg-gray-50 transition-colors group">
                                 <div className={`w-2 h-2 rounded-full mt-1.5 shrink-0 ${msg.is_read ? 'bg-white/15' : 'bg-[#d4a853]'}`}/>
                                 <div className="flex-1 min-w-0">
                                     <div className="flex items-center justify-between gap-2">
-                                        <p className={`text-sm font-medium truncate ${msg.is_read ? 'text-white/60' : 'text-white'}`}>{msg.name}</p>
-                                        <p className="text-white/30 text-xs shrink-0">{new Date(msg.created_at).toLocaleDateString()}</p>
+                                        <p className={`text-sm font-medium truncate ${msg.is_read ? 'text-gray-500' : 'text-white'}`}>{msg.name}</p>
+                                        <p className="text-gray-400 text-xs shrink-0">{new Date(msg.created_at).toLocaleDateString()}</p>
                                     </div>
-                                    {msg.subject && <p className="text-white/40 text-xs mt-0.5 truncate">{msg.subject}</p>}
-                                    <p className="text-white/35 text-xs mt-1 truncate">{msg.message}</p>
+                                    {msg.subject && <p className="text-gray-500 text-xs mt-0.5 truncate">{msg.subject}</p>}
+                                    <p className="text-gray-400 text-xs mt-1 truncate">{msg.message}</p>
                                 </div>
                             </Link>
                         ))}

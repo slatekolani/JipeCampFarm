@@ -80,8 +80,8 @@ function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
             ))}
 
             {/* Gradient overlays */}
-            <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#071510]/90 via-[#071510]/40 to-transparent" />
-            <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#071510] via-transparent to-black/30" />
+            <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/80 via-black/30 to-transparent" />
+            <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
 
             {/* Content panel — left aligned */}
             <div className="absolute inset-0 z-20 flex items-center">
@@ -287,7 +287,7 @@ function CountUpStat({ value, label }: { value: string; label: string }) {
             <p className="text-3xl sm:text-4xl font-bold text-[#d4a853] mb-1 tabular-nums">
                 {prefix}{displayStr}{suffix}
             </p>
-            <p className="text-white/50 text-sm">{label}</p>
+            <p className="text-gray-500 text-sm">{label}</p>
         </div>
     );
 }
@@ -322,13 +322,13 @@ export default function Welcome({ heroSlides, about, activities, packages, galle
                     ]
                 }`}</script>
             </Head>
-            <style>{`html{scroll-behavior:smooth}::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:#040e08}::-webkit-scrollbar-thumb{background:#2d6a4f;border-radius:3px}::-webkit-scrollbar-thumb:hover{background:#d4a853}`}</style>
+            <style>{`html{scroll-behavior:smooth}::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:#f3f4f6}::-webkit-scrollbar-thumb{background:#d4a853;border-radius:3px}::-webkit-scrollbar-thumb:hover{background:#c49640}`}</style>
 
             <HeroCarousel slides={heroSlides}/>
 
             {/* Stats */}
-            <div className="bg-[#0d1f13] border-y border-[#d4a853]/20">
-                <div className="max-w-7xl mx-auto px-5 lg:px-8 py-10 grid grid-cols-2 lg:grid-cols-4 gap-8 lg:divide-x lg:divide-white/10">
+            <div className="bg-gray-50 border-y border-[#d4a853]/30">
+                <div className="max-w-7xl mx-auto px-5 lg:px-8 py-10 grid grid-cols-2 lg:grid-cols-4 gap-8 lg:divide-x lg:divide-gray-200">
                     {(about?.stats ?? []).map((s) => (
                         <CountUpStat key={s.label} value={s.value} label={s.label} />
                     ))}
@@ -337,28 +337,28 @@ export default function Welcome({ heroSlides, about, activities, packages, galle
 
             {/* About preview */}
             {about && (
-                <section className="bg-[#071510] py-24 lg:py-32">
+                <section className="bg-white py-24 lg:py-32">
                     <div className="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                         <div className="relative">
                             <div className="overflow-hidden rounded-2xl aspect-[4/5]">
                                 <img src={about.image_url ?? ''} alt="Jipe Farm" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"/>
-                                <div className="absolute inset-0 bg-gradient-to-t from-[#071510]/50 to-transparent"/>
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"/>
                             </div>
-                            <div className="absolute bottom-6 left-6 bg-[#0d1f13]/90 backdrop-blur-sm border border-[#d4a853]/30 rounded-xl p-4">
+                            <div className="absolute bottom-6 left-6 bg-white/90 backdrop-blur-sm border border-[#d4a853]/30 rounded-xl p-4">
                                 <p className="text-[#d4a853] font-bold text-xl">3°S, 37°E</p>
-                                <p className="text-white/60 text-xs mt-0.5">Northern Tanzania</p>
+                                <p className="text-gray-500 text-xs mt-0.5">Northern Tanzania</p>
                             </div>
                             <div className="absolute -top-4 -right-4 w-24 h-24 border-t-2 border-r-2 border-[#d4a853]/40 rounded-tr-2xl"/>
                         </div>
                         <div>
                             <p className="text-[#d4a853] text-xs font-semibold tracking-[0.25em] uppercase mb-4">{about.subheading}</p>
-                            <h2 className="text-4xl sm:text-5xl font-bold text-white leading-tight mb-6">{about.heading}</h2>
-                            <p className="text-white/60 leading-relaxed mb-5">{about.body}</p>
-                            {about.body_secondary && <p className="text-white/60 leading-relaxed mb-8">{about.body_secondary}</p>}
+                            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight mb-6">{about.heading}</h2>
+                            <p className="text-gray-600 leading-relaxed mb-5">{about.body}</p>
+                            {about.body_secondary && <p className="text-gray-600 leading-relaxed mb-8">{about.body_secondary}</p>}
                             {about.features && (
                                 <ul className="grid sm:grid-cols-2 gap-3 mb-8">
                                     {about.features.slice(0, 6).map((f) => (
-                                        <li key={f} className="flex items-start gap-3 text-white/75 text-sm">
+                                        <li key={f} className="flex items-start gap-3 text-gray-700 text-sm">
                                             <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 mt-0.5 text-[#d4a853] shrink-0"><path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd"/></svg>
                                             {f}
                                         </li>
@@ -376,12 +376,12 @@ export default function Welcome({ heroSlides, about, activities, packages, galle
 
             {/* Activities preview */}
             {activities.length > 0 && (
-                <section className="bg-[#040e08] py-24 lg:py-32">
+                <section className="bg-gray-50 py-24 lg:py-32">
                     <div className="max-w-7xl mx-auto px-5 lg:px-8">
                         <div className="text-center max-w-2xl mx-auto mb-14">
                             <p className="text-[#d4a853] text-xs font-semibold tracking-[0.25em] uppercase mb-4">What Awaits You</p>
-                            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">Adventures at Jipe Farm</h2>
-                            <p className="text-white/55">From silent canoe safaris to star-lit campfires — every day at Jipe Farm Campsite is unlike any other.</p>
+                            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">Adventures at Jipe Farm</h2>
+                            <p className="text-gray-600">From silent canoe safaris to star-lit campfires — every day at Jipe Farm Campsite is unlike any other.</p>
                         </div>
                         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
                             {activities.map((act) => (
@@ -404,7 +404,7 @@ export default function Welcome({ heroSlides, about, activities, packages, galle
                             ))}
                         </div>
                         <div className="text-center mt-10">
-                            <Link href="/activities" className="inline-block border border-[#d4a853]/50 hover:border-[#d4a853] hover:text-[#d4a853] text-white/70 font-semibold px-8 py-3 rounded-full transition-all duration-200 text-sm">
+                            <Link href="/activities" className="inline-block border border-[#d4a853]/50 hover:border-[#d4a853] hover:text-[#d4a853] text-gray-700 font-semibold px-8 py-3 rounded-full transition-all duration-200 text-sm">
                                 See All Activities
                             </Link>
                         </div>
@@ -414,35 +414,35 @@ export default function Welcome({ heroSlides, about, activities, packages, galle
 
             {/* Packages preview */}
             {packages.length > 0 && (
-                <section className="bg-[#071510] py-24 lg:py-32">
+                <section className="bg-white py-24 lg:py-32">
                     <div className="max-w-7xl mx-auto px-5 lg:px-8">
                         <div className="text-center max-w-xl mx-auto mb-14">
                             <p className="text-[#d4a853] text-xs font-semibold tracking-[0.25em] uppercase mb-4">Tour Packages</p>
-                            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">Curated Experiences</h2>
-                            <p className="text-white/55">From weekend escapes to week-long immersions — choose your adventure.</p>
+                            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">Curated Experiences</h2>
+                            <p className="text-gray-600">From weekend escapes to week-long immersions — choose your adventure.</p>
                         </div>
                         <div className="grid lg:grid-cols-3 gap-7">
                             {packages.map((pkg) => (
-                                <div key={pkg.id} className={`flex flex-col rounded-2xl overflow-hidden hover:-translate-y-1 transition-transform duration-300 ${pkg.is_featured ? 'ring-2 ring-[#d4a853] shadow-2xl shadow-[#d4a853]/10' : 'ring-1 ring-white/10'}`}>
+                                <div key={pkg.id} className={`flex flex-col rounded-2xl overflow-hidden hover:-translate-y-1 transition-transform duration-300 ${pkg.is_featured ? 'ring-2 ring-[#d4a853] shadow-2xl shadow-[#d4a853]/10' : 'ring-1 ring-gray-200'}`}>
                                     <div className="relative h-48 overflow-hidden">
                                         <img src={pkg.image_url} alt={pkg.name} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"/>
-                                        <div className="absolute inset-0 bg-gradient-to-t from-[#0d1f13]"/>
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60"/>
                                         {pkg.badge && (
-                                            <span className={`absolute top-4 right-4 text-[10px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full ${pkg.is_featured ? 'bg-[#d4a853] text-[#071510]' : 'bg-white/15 backdrop-blur-sm text-white'}`}>{pkg.badge}</span>
+                                            <span className={`absolute top-4 right-4 text-[10px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full ${pkg.is_featured ? 'bg-[#d4a853] text-[#071510]' : 'bg-black/30 backdrop-blur-sm text-white'}`}>{pkg.badge}</span>
                                         )}
                                     </div>
-                                    <div className="bg-[#0d1f13] flex flex-col flex-1 p-6">
+                                    <div className="bg-white flex flex-col flex-1 p-6 border border-t-0 border-gray-200 rounded-b-2xl">
                                         <div className="flex items-start justify-between mb-3">
-                                            <h3 className="text-white font-bold text-xl">{pkg.name}</h3>
+                                            <h3 className="text-gray-900 font-bold text-xl">{pkg.name}</h3>
                                             <div className="text-right shrink-0 ml-3">
                                                 <span className="text-[#d4a853] font-bold text-2xl">{pkg.price}</span>
-                                                <span className="text-white/40 text-xs block">{pkg.price_note ?? 'per person'}</span>
+                                                <span className="text-gray-500 text-xs block">{pkg.price_note ?? 'per person'}</span>
                                             </div>
                                         </div>
                                         <p className="text-[#d4a853]/70 text-xs font-semibold tracking-wide uppercase mb-3">{pkg.duration}</p>
-                                        <p className="text-white/55 text-sm leading-relaxed mb-5 flex-1">{pkg.description}</p>
+                                        <p className="text-gray-600 text-sm leading-relaxed mb-5 flex-1">{pkg.description}</p>
                                         <div className="flex gap-2">
-                                            <Link href={`/packages/${pkg.id}`} className={`flex-1 block text-center font-semibold text-sm py-3 rounded-xl transition-all ${pkg.is_featured ? 'bg-[#d4a853] hover:bg-[#c49640] text-[#071510]' : 'border border-white/20 hover:border-[#d4a853] text-white hover:text-[#d4a853]'}`}>
+                                            <Link href={`/packages/${pkg.id}`} className={`flex-1 block text-center font-semibold text-sm py-3 rounded-xl transition-all ${pkg.is_featured ? 'bg-[#d4a853] hover:bg-[#c49640] text-[#071510]' : 'border border-gray-200 hover:border-[#d4a853] text-gray-700 hover:text-[#d4a853]'}`}>
                                                 View Details
                                             </Link>
                                         </div>
@@ -451,7 +451,7 @@ export default function Welcome({ heroSlides, about, activities, packages, galle
                             ))}
                         </div>
                         <div className="text-center mt-10">
-                            <Link href="/packages" className="inline-block border border-[#d4a853]/50 hover:border-[#d4a853] hover:text-[#d4a853] text-white/70 font-semibold px-8 py-3 rounded-full transition-all text-sm">
+                            <Link href="/packages" className="inline-block border border-[#d4a853]/50 hover:border-[#d4a853] hover:text-[#d4a853] text-gray-700 font-semibold px-8 py-3 rounded-full transition-all text-sm">
                                 View All Packages
                             </Link>
                         </div>
@@ -461,11 +461,11 @@ export default function Welcome({ heroSlides, about, activities, packages, galle
 
             {/* Gallery preview */}
             {gallery.length > 0 && (
-                <section className="bg-[#040e08] py-24 lg:py-32">
+                <section className="bg-gray-50 py-24 lg:py-32">
                     <div className="max-w-7xl mx-auto px-5 lg:px-8">
                         <div className="text-center max-w-xl mx-auto mb-12">
                             <p className="text-[#d4a853] text-xs font-semibold tracking-[0.25em] uppercase mb-4">Gallery</p>
-                            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">Through Our Lens</h2>
+                            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">Through Our Lens</h2>
                         </div>
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
                             {gallery.slice(0, 8).map((img, i) => (
@@ -479,7 +479,7 @@ export default function Welcome({ heroSlides, about, activities, packages, galle
                             ))}
                         </div>
                         <div className="text-center mt-10">
-                            <Link href="/gallery" className="inline-block border border-[#d4a853]/50 hover:border-[#d4a853] hover:text-[#d4a853] text-white/70 font-semibold px-8 py-3 rounded-full transition-all text-sm">
+                            <Link href="/gallery" className="inline-block border border-[#d4a853]/50 hover:border-[#d4a853] hover:text-[#d4a853] text-gray-700 font-semibold px-8 py-3 rounded-full transition-all text-sm">
                                 View Full Gallery
                             </Link>
                         </div>
@@ -489,24 +489,24 @@ export default function Welcome({ heroSlides, about, activities, packages, galle
 
             {/* Testimonials */}
             {testimonials.length > 0 && (
-                <section className="bg-[#071510] py-24 lg:py-32">
+                <section className="bg-white py-24 lg:py-32">
                     <div className="max-w-7xl mx-auto px-5 lg:px-8">
                         <div className="text-center max-w-xl mx-auto mb-12">
                             <p className="text-[#d4a853] text-xs font-semibold tracking-[0.25em] uppercase mb-4">Guest Reviews</p>
-                            <h2 className="text-4xl sm:text-5xl font-bold text-white">Words from the Wild</h2>
+                            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900">Words from the Wild</h2>
                         </div>
                         <div className="grid lg:grid-cols-3 gap-6">
                             {testimonials.slice(0, 3).map((t) => (
-                                <div key={t.id} className="bg-[#0d1f13] border border-white/8 rounded-2xl p-6 flex flex-col hover:border-[#d4a853]/30 transition-colors">
+                                <div key={t.id} className="bg-white border border-gray-200 rounded-2xl p-6 flex flex-col hover:border-[#d4a853]/30 transition-colors shadow-sm">
                                     <div className="flex gap-1 text-[#d4a853] mb-4">
                                         {Array.from({length: t.rating}).map((_, i) => (
                                             <svg key={i} viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                                         ))}
                                     </div>
-                                    <p className="text-white/70 text-sm leading-relaxed flex-1 italic mb-5">"{t.content}"</p>
-                                    <div className="border-t border-white/8 pt-4">
-                                        <p className="text-white font-semibold text-sm">{t.name}</p>
-                                        <p className="text-white/40 text-xs mt-0.5">{t.country}</p>
+                                    <p className="text-gray-600 text-sm leading-relaxed flex-1 italic mb-5">"{t.content}"</p>
+                                    <div className="border-t border-gray-100 pt-4">
+                                        <p className="text-gray-900 font-semibold text-sm">{t.name}</p>
+                                        <p className="text-gray-500 text-xs mt-0.5">{t.country}</p>
                                     </div>
                                 </div>
                             ))}

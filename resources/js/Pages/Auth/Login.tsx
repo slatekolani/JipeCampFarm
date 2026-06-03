@@ -14,12 +14,12 @@ export default function Login({ status, canResetPassword }: { status?: string; c
             <Head title="Admin Login — Jipe Farm Campsite"/>
             <style>{`::-webkit-scrollbar{display:none}`}</style>
 
-            <div className="min-h-screen flex bg-[#040e08]">
+            <div className="min-h-screen flex bg-white">
                 {/* Left: scenic panel */}
                 <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden">
                         <img src="/Images/Canoeing.jpg" alt="Canoeing on Lake Jipe" className="absolute inset-0 w-full h-full object-cover"/>
 
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#040e08]/70 via-[#071510]/40 to-[#040e08]/20"/>
+                    <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/25 to-transparent"/>
                     <div className="relative z-10 flex flex-col justify-between p-10 w-full">
                         {/* Logo */}
                         <div className="flex items-center gap-3">
@@ -52,14 +52,14 @@ export default function Login({ status, canResetPassword }: { status?: string; c
                         <div className="flex items-center gap-3 mb-10 lg:hidden">
                             <BrandLogo className="h-16 w-16 shrink-0" />
                             <div>
-                                <p className="text-white font-bold text-lg leading-none">Jipe Farm Campsite</p>
+                                <p className="text-gray-900 font-bold text-lg leading-none">Jipe Farm Campsite</p>
                                 <p className="text-[#f1ce47] text-[10px] tracking-[0.2em] uppercase mt-1">Tanzania</p>
                             </div>
                         </div>
 
                         <div className="mb-8">
-                            <h1 className="text-3xl font-bold text-white mb-2">Admin Login</h1>
-                            <p className="text-white/45 text-sm">Sign in to manage your camp website content.</p>
+                            <h1 className="text-3xl font-bold text-gray-900 mb-2">Admin Login</h1>
+                            <p className="text-gray-500 text-sm">Sign in to manage your camp website content.</p>
                         </div>
 
                         {status && (
@@ -70,7 +70,7 @@ export default function Login({ status, canResetPassword }: { status?: string; c
 
                         <form onSubmit={submit} className="space-y-5">
                             <div>
-                                <label className="block text-white/50 text-xs uppercase tracking-wider mb-2" htmlFor="email">
+                                <label className="block text-gray-600 text-xs uppercase tracking-wider mb-2" htmlFor="email">
                                     Email Address
                                 </label>
                                 <input
@@ -80,14 +80,14 @@ export default function Login({ status, canResetPassword }: { status?: string; c
                                     autoFocus
                                     value={data.email}
                                     onChange={e => setData('email', e.target.value)}
-                                    className="w-full bg-white/5 border border-white/10 focus:border-[#d4a853]/70 focus:bg-white/8 text-white placeholder-white/25 rounded-xl px-4 py-3.5 text-sm outline-none transition-all"
+                                    className="w-full bg-gray-50 border border-gray-300 focus:border-[#d4a853]/70 focus:bg-white text-gray-900 placeholder-gray-400 rounded-xl px-4 py-3.5 text-sm outline-none transition-all"
                                     placeholder="adminjipe@jipecamp.com"
                                 />
                                 {errors.email && <p className="text-red-400 text-xs mt-1.5">{errors.email}</p>}
                             </div>
 
                             <div>
-                                <label className="block text-white/50 text-xs uppercase tracking-wider mb-2" htmlFor="password">
+                                <label className="block text-gray-600 text-xs uppercase tracking-wider mb-2" htmlFor="password">
                                     Password
                                 </label>
                                 <input
@@ -96,7 +96,7 @@ export default function Login({ status, canResetPassword }: { status?: string; c
                                     autoComplete="current-password"
                                     value={data.password}
                                     onChange={e => setData('password', e.target.value)}
-                                    className="w-full bg-white/5 border border-white/10 focus:border-[#d4a853]/70 focus:bg-white/8 text-white placeholder-white/25 rounded-xl px-4 py-3.5 text-sm outline-none transition-all"
+                                    className="w-full bg-gray-50 border border-gray-300 focus:border-[#d4a853]/70 focus:bg-white text-gray-900 placeholder-gray-400 rounded-xl px-4 py-3.5 text-sm outline-none transition-all"
                                     placeholder="••••••••••"
                                 />
                                 {errors.password && <p className="text-red-400 text-xs mt-1.5">{errors.password}</p>}
@@ -108,9 +108,9 @@ export default function Login({ status, canResetPassword }: { status?: string; c
                                         type="checkbox"
                                         checked={data.remember}
                                         onChange={e => setData('remember', e.target.checked)}
-                                        className="w-4 h-4 rounded border-white/20 bg-white/5 accent-[#d4a853]"
+                                        className="w-4 h-4 rounded border-gray-300 bg-white accent-[#d4a853]"
                                     />
-                                    <span className="text-white/50 text-sm">Remember me</span>
+                                    <span className="text-gray-600 text-sm">Remember me</span>
                                 </label>
                                 {canResetPassword && (
                                     <a href={route('password.request')} className="text-[#d4a853]/80 hover:text-[#d4a853] text-sm transition-colors">
@@ -128,8 +128,8 @@ export default function Login({ status, canResetPassword }: { status?: string; c
                             </button>
                         </form>
 
-                        <div className="mt-8 pt-6 border-t border-white/8 text-center">
-                            <a href="/" className="text-white/35 hover:text-white/60 text-xs transition-colors">
+                        <div className="mt-8 pt-6 border-t border-gray-200 text-center">
+                            <a href="/" className="text-gray-400 hover:text-gray-600 text-xs transition-colors">
                                 ← Return to public website
                             </a>
                         </div>

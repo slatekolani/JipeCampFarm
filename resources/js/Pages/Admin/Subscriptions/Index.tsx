@@ -33,7 +33,7 @@ export default function SubscriptionsIndex({ subscriptions }: PageProps<{ subscr
             <Head title="Subscriptions — Admin"/>
             <div className="mb-7">
                 <h1 className="text-xl font-bold text-white">Subscribers</h1>
-                <p className="text-white/40 text-sm mt-0.5">
+                <p className="text-gray-500 text-sm mt-0.5">
                     {subscriptions.length} total · {smsCount} SMS · {emailCount} Email
                 </p>
             </div>
@@ -47,7 +47,7 @@ export default function SubscriptionsIndex({ subscriptions }: PageProps<{ subscr
                         className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
                             filter === f
                                 ? 'bg-[#d4a853]/15 text-[#d4a853] border border-[#d4a853]/30'
-                                : 'text-white/50 border border-white/10 hover:text-white hover:border-white/25'
+                                : 'text-gray-600 border border-gray-200 hover:text-white hover:border-white/25'
                         }`}
                     >
                         {f === 'all' ? `All (${subscriptions.length})` : f === 'sms' ? `SMS (${smsCount})` : `Email (${emailCount})`}
@@ -56,32 +56,32 @@ export default function SubscriptionsIndex({ subscriptions }: PageProps<{ subscr
             </div>
 
             {/* Table */}
-            <div className="bg-[#071510] border border-white/8 rounded-2xl overflow-hidden">
+            <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden">
                 {visible.length === 0 ? (
                     <div className="text-center py-20">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1} className="w-12 h-12 text-white/15 mx-auto mb-4">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1} className="w-12 h-12 text-gray-300 mx-auto mb-4">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
                         </svg>
-                        <p className="text-white/40 text-sm">No subscribers yet.</p>
+                        <p className="text-gray-500 text-sm">No subscribers yet.</p>
                     </div>
                 ) : (
                     <div className="overflow-x-auto">
                         <table className="w-full">
                             <thead>
-                                <tr className="border-b border-white/8">
-                                    <th className="text-left text-white/40 text-xs font-medium px-5 py-3.5">Name</th>
-                                    <th className="text-left text-white/40 text-xs font-medium px-5 py-3.5">Contact</th>
-                                    <th className="text-left text-white/40 text-xs font-medium px-5 py-3.5">Type</th>
-                                    <th className="text-left text-white/40 text-xs font-medium px-5 py-3.5">Who</th>
-                                    <th className="text-left text-white/40 text-xs font-medium px-5 py-3.5">Date</th>
+                                <tr className="border-b border-gray-200">
+                                    <th className="text-left text-gray-500 text-xs font-medium px-5 py-3.5">Name</th>
+                                    <th className="text-left text-gray-500 text-xs font-medium px-5 py-3.5">Contact</th>
+                                    <th className="text-left text-gray-500 text-xs font-medium px-5 py-3.5">Type</th>
+                                    <th className="text-left text-gray-500 text-xs font-medium px-5 py-3.5">Who</th>
+                                    <th className="text-left text-gray-500 text-xs font-medium px-5 py-3.5">Date</th>
                                     <th className="px-5 py-3.5"/>
                                 </tr>
                             </thead>
-                            <tbody className="divide-y divide-white/5">
+                            <tbody className="divide-y divide-gray-100">
                                 {visible.map(s => (
                                     <tr key={s.id} className="hover:bg-white/2 transition-colors">
                                         <td className="px-5 py-3.5 text-white text-sm font-medium">{s.name}</td>
-                                        <td className="px-5 py-3.5 text-white/55 text-sm">
+                                        <td className="px-5 py-3.5 text-gray-500 text-sm">
                                             {s.type === 'sms' ? s.phone : s.email}
                                         </td>
                                         <td className="px-5 py-3.5">
@@ -93,10 +93,10 @@ export default function SubscriptionsIndex({ subscriptions }: PageProps<{ subscr
                                                 {s.type.toUpperCase()}
                                             </span>
                                         </td>
-                                        <td className="px-5 py-3.5 text-white/40 text-xs">
+                                        <td className="px-5 py-3.5 text-gray-500 text-xs">
                                             {s.subscriber_type ? subscriberTypeLabel[s.subscriber_type] : '—'}
                                         </td>
-                                        <td className="px-5 py-3.5 text-white/30 text-xs whitespace-nowrap">
+                                        <td className="px-5 py-3.5 text-gray-400 text-xs whitespace-nowrap">
                                             {new Date(s.created_at).toLocaleDateString()}
                                         </td>
                                         <td className="px-5 py-3.5 text-right">

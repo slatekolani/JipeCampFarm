@@ -24,19 +24,19 @@ export default function Gallery({ images, categories }: PageProps<{ images: Gall
 
             <div className="relative h-72 lg:h-screen flex items-end overflow-hidden">
                 <img src="/Images/Jipe Lake.jpg" alt="About" className="absolute inset-0 w-full h-full object-cover"/>
-                <div className="absolute inset-0 bg-gradient-to-b from-[#071510]/20 via-[#071510]/40 to-[#071510]"/>
+                <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/60 to-black/90"/>
                 <div className="relative z-10 max-w-7xl mx-auto px-5 lg:px-8 pb-14 w-full">
                     <p className="text-[#d4a853] text-xs font-semibold tracking-[0.25em] uppercase mb-3">Visual Stories</p>
                     <h1 className="text-4xl sm:text-6xl font-bold text-white">Through Our Lens</h1>
                 </div>
             </div>
 
-            <section className="bg-[#071510] py-16">
+            <section className="bg-white py-16">
                 <div className="max-w-7xl mx-auto px-5 lg:px-8">
                     {/* Category filter */}
                     <div className="flex flex-wrap gap-2 mb-10">
                         {['All', ...categories].map((cat) => (
-                            <button key={cat} onClick={() => setFilter(cat)} className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${filter === cat ? 'bg-[#d4a853] text-[#071510]' : 'border border-white/15 text-white/60 hover:border-[#d4a853]/50 hover:text-white'}`}>
+                            <button key={cat} onClick={() => setFilter(cat)} className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${filter === cat ? 'bg-[#d4a853] text-[#071510]' : 'border border-gray-300 text-gray-500 hover:border-[#d4a853]/50 hover:text-gray-900'}`}>
                                 {cat}
                             </button>
                         ))}
@@ -50,14 +50,14 @@ export default function Gallery({ images, categories }: PageProps<{ images: Gall
                                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex flex-col justify-end p-4">
                                     <div className="translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
                                         <span className="inline-block bg-[#d4a853] text-[#071510] text-[9px] font-bold tracking-wider uppercase px-2 py-1 rounded-full mb-2">{img.category}</span>
-                                        <p className="text-white font-semibold text-sm">{img.title}</p>
-                                        {img.description && <p className="text-white/70 text-xs mt-1 line-clamp-2">{img.description}</p>}
+                                        <p className="text-gray-900 font-semibold text-sm">{img.title}</p>
+                                        {img.description && <p className="text-gray-600 text-xs mt-1 line-clamp-2">{img.description}</p>}
                                     </div>
                                 </div>
                             </div>
                         ))}
                     </div>
-                    {filtered.length === 0 && <p className="text-center text-white/40 py-20">No images in this category yet.</p>}
+                    {filtered.length === 0 && <p className="text-center text-gray-500 py-20">No images in this category yet.</p>}
                 </div>
             </section>
 

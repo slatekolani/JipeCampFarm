@@ -36,7 +36,7 @@ function BookingModal({ pkg, onClose }: { pkg: Package; onClose: () => void }) {
         post(`/packages/${pkg.id}/book`);
     };
 
-    const inputCls = "w-full bg-white/5 border border-white/10 focus:border-[#d4a853]/60 text-white rounded-xl px-4 py-3 text-sm outline-none transition-colors placeholder-white/25";
+    const inputCls = "w-full bg-gray-50 border border-gray-200 focus:border-[#d4a853]/60 text-gray-900 rounded-xl px-4 py-3 text-sm outline-none transition-colors placeholder-gray-400";
 
     return (
         <div
@@ -44,18 +44,18 @@ function BookingModal({ pkg, onClose }: { pkg: Package; onClose: () => void }) {
             onClick={onClose}
         >
             <div
-                className="relative bg-[#0d1f13] border border-white/10 rounded-2xl w-full max-w-lg my-auto shadow-2xl"
+                className="relative bg-white border border-gray-200 rounded-2xl w-full max-w-lg my-auto shadow-2xl"
                 onClick={e => e.stopPropagation()}
             >
                 {/* Header */}
-                <div className="px-7 pt-7 pb-5 border-b border-white/8">
+                <div className="px-7 pt-7 pb-5 border-b border-gray-200">
                     <div className="flex items-start justify-between gap-4">
                         <div>
                             <p className="text-[#d4a853] text-xs font-bold uppercase tracking-widest mb-1">Booking Enquiry</p>
-                            <h2 className="text-white font-bold text-xl">{pkg.name}</h2>
-                            <p className="text-white/40 text-sm mt-0.5">{pkg.duration} · {pkg.price} {pkg.price_note ?? 'per person'}</p>
+                            <h2 className="text-gray-900 font-bold text-xl">{pkg.name}</h2>
+                            <p className="text-gray-500 text-sm mt-0.5">{pkg.duration} · {pkg.price} {pkg.price_note ?? 'per person'}</p>
                         </div>
-                        <button onClick={onClose} className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-white/50 hover:text-white transition-all flex-shrink-0 mt-0.5">
+                        <button onClick={onClose} className="w-8 h-8 rounded-full bg-gray-50 hover:bg-gray-100 flex items-center justify-center text-gray-600 hover:text-gray-900 transition-all flex-shrink-0 mt-0.5">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                             </svg>
@@ -71,9 +71,9 @@ function BookingModal({ pkg, onClose }: { pkg: Package; onClose: () => void }) {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
                         </div>
-                        <h3 className="text-white font-bold text-lg mb-2">Enquiry Received!</h3>
-                        <p className="text-white/55 text-sm leading-relaxed mb-6">
-                            Thank you! We've received your booking enquiry for <strong className="text-white">{pkg.name}</strong>.
+                        <h3 className="text-gray-900 font-bold text-lg mb-2">Enquiry Received!</h3>
+                        <p className="text-gray-500 text-sm leading-relaxed mb-6">
+                            Thank you! We've received your booking enquiry for <strong className="text-gray-900">{pkg.name}</strong>.
                             Our team will get back to you within 24 hours.
                         </p>
                         <button onClick={onClose} className="bg-[#d4a853] hover:bg-[#c49640] text-[#071510] font-bold px-8 py-3 rounded-xl text-sm transition-all">
@@ -82,14 +82,14 @@ function BookingModal({ pkg, onClose }: { pkg: Package; onClose: () => void }) {
                     </div>
                 ) : (
                     <form onSubmit={submit} className="px-7 py-6 space-y-4">
-                        <p className="text-white/40 text-xs leading-relaxed">
+                        <p className="text-gray-500 text-xs leading-relaxed">
                             No payment required — we'll confirm availability and reach out with details.
                         </p>
 
                         {/* Name + Email */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label className="block text-white/50 text-xs uppercase tracking-wider mb-1.5">Full Name *</label>
+                                <label className="block text-gray-600 text-xs uppercase tracking-wider mb-1.5">Full Name *</label>
                                 <input
                                     type="text"
                                     value={data.name}
@@ -101,7 +101,7 @@ function BookingModal({ pkg, onClose }: { pkg: Package; onClose: () => void }) {
                                 {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name}</p>}
                             </div>
                             <div>
-                                <label className="block text-white/50 text-xs uppercase tracking-wider mb-1.5">Email Address *</label>
+                                <label className="block text-gray-600 text-xs uppercase tracking-wider mb-1.5">Email Address *</label>
                                 <input
                                     type="email"
                                     value={data.email}
@@ -116,7 +116,7 @@ function BookingModal({ pkg, onClose }: { pkg: Package; onClose: () => void }) {
 
                         {/* Phone */}
                         <div>
-                            <label className="block text-white/50 text-xs uppercase tracking-wider mb-1.5">Phone Number *</label>
+                            <label className="block text-gray-600 text-xs uppercase tracking-wider mb-1.5">Phone Number *</label>
                             <input
                                 type="tel"
                                 value={data.phone}
@@ -131,12 +131,12 @@ function BookingModal({ pkg, onClose }: { pkg: Package; onClose: () => void }) {
                         {/* Group size */}
                         <div className="grid grid-cols-1 gap-4">
                             <div>
-                                <label className="block text-white/50 text-xs uppercase tracking-wider mb-1.5">Group Size *</label>
+                                <label className="block text-gray-600 text-xs uppercase tracking-wider mb-1.5">Group Size *</label>
                                 <div className="flex items-center gap-2">
                                     <button
                                         type="button"
                                         onClick={() => setData('group_size', Math.max(1, data.group_size - 1))}
-                                        className="w-10 h-[46px] flex-shrink-0 bg-white/5 border border-white/10 text-white rounded-xl hover:bg-white/10 transition-colors text-lg font-light"
+                                        className="w-10 h-[46px] flex-shrink-0 bg-gray-50 border border-gray-200 text-gray-900 rounded-xl hover:bg-gray-100 transition-colors text-lg font-light"
                                     >
                                         −
                                     </button>
@@ -152,7 +152,7 @@ function BookingModal({ pkg, onClose }: { pkg: Package; onClose: () => void }) {
                                     <button
                                         type="button"
                                         onClick={() => setData('group_size', Math.min(200, data.group_size + 1))}
-                                        className="w-10 h-[46px] flex-shrink-0 bg-white/5 border border-white/10 text-white rounded-xl hover:bg-white/10 transition-colors text-lg font-light"
+                                        className="w-10 h-[46px] flex-shrink-0 bg-gray-50 border border-gray-200 text-gray-900 rounded-xl hover:bg-gray-100 transition-colors text-lg font-light"
                                     >
                                         +
                                     </button>
@@ -163,7 +163,7 @@ function BookingModal({ pkg, onClose }: { pkg: Package; onClose: () => void }) {
 
                         {/* Notes */}
                         <div>
-                            <label className="block text-white/50 text-xs uppercase tracking-wider mb-1.5">Additional Notes</label>
+                            <label className="block text-gray-600 text-xs uppercase tracking-wider mb-1.5">Additional Notes</label>
                             <textarea
                                 value={data.notes}
                                 onChange={e => setData('notes', e.target.value)}
@@ -175,8 +175,8 @@ function BookingModal({ pkg, onClose }: { pkg: Package; onClose: () => void }) {
                         </div>
 
                         {/* Deals consent */}
-                        <div className="bg-white/3 border border-white/8 rounded-xl p-4">
-                            <p className="text-white/70 text-sm font-medium mb-3">
+                        <div className="bg-white/3 border border-gray-200 rounded-xl p-4">
+                            <p className="text-gray-600 text-sm font-medium mb-3">
                                 We'd love to send you exclusive deals when they arise — are you in?
                             </p>
                             <div className="flex flex-wrap gap-2">
@@ -192,8 +192,8 @@ function BookingModal({ pkg, onClose }: { pkg: Package; onClose: () => void }) {
                                             data.wants_deals === opt.value
                                                 ? opt.value === 'yes'
                                                     ? 'bg-[#d4a853] border-[#d4a853] text-[#071510]'
-                                                    : 'bg-white/10 border-white/30 text-white'
-                                                : 'bg-transparent border-white/15 text-white/50 hover:border-white/30 hover:text-white/80'
+                                                    : 'bg-gray-200 border-gray-400 text-gray-900'
+                                                : 'bg-transparent border-gray-300 text-gray-600 hover:border-gray-400 hover:text-gray-700'
                                         }`}
                                     >
                                         {opt.label}
@@ -209,7 +209,7 @@ function BookingModal({ pkg, onClose }: { pkg: Package; onClose: () => void }) {
                             {processing ? 'Sending Enquiry…' : 'Send Booking Enquiry'}
                         </button>
 
-                        <p className="text-center text-white/25 text-xs">
+                        <p className="text-center text-gray-400 text-xs">
                             We respond within 24 hours · No credit card required
                         </p>
                     </form>
@@ -292,18 +292,18 @@ export default function PackageDetail({ package: pkg, others }: PageProps<{ pack
                 {pkg.image_url ? (
                     <img src={pkg.image_url} alt={pkg.name} className="absolute inset-0 w-full h-full object-cover" />
                 ) : (
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#071510] to-[#0d2218]" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-black/80 to-black/90" />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#071510] via-[#071510]/50 to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#071510]/80 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/35 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-transparent to-transparent" />
 
                 <div className="absolute bottom-0 left-0 px-6 pb-10 md:px-16 md:pb-14 max-w-3xl">
-                    <div className="flex items-center gap-2 text-white/40 text-xs mb-4">
+                    <div className="flex items-center gap-2 text-gray-500 text-xs mb-4">
                         <Link href="/" className="hover:text-[#d4a853] transition-colors">Home</Link>
                         <span>/</span>
                         <Link href="/packages" className="hover:text-[#d4a853] transition-colors">Packages</Link>
                         <span>/</span>
-                        <span className="text-white/60">{pkg.name}</span>
+                        <span className="text-gray-500">{pkg.name}</span>
                     </div>
 
                     <div className="flex flex-wrap items-center gap-2 mb-4">
@@ -312,7 +312,7 @@ export default function PackageDetail({ package: pkg, others }: PageProps<{ pack
                                 {pkg.badge}
                             </span>
                         )}
-                        <span className="text-xs text-white/50 bg-white/5 border border-white/10 px-3 py-1 rounded-full flex items-center gap-1.5">
+                        <span className="text-xs text-gray-600 bg-gray-50 border border-gray-200 px-3 py-1 rounded-full flex items-center gap-1.5">
                             <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                             </svg>
@@ -320,7 +320,7 @@ export default function PackageDetail({ package: pkg, others }: PageProps<{ pack
                         </span>
                     </div>
 
-                    <h1 className="text-3xl md:text-5xl font-bold text-white mb-3 leading-tight">{pkg.name}</h1>
+                    <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-3 leading-tight">{pkg.name}</h1>
                     {pkg.tagline && (
                         <p className="text-[#d4a853] text-lg md:text-xl font-medium">{pkg.tagline}</p>
                     )}
@@ -328,40 +328,40 @@ export default function PackageDetail({ package: pkg, others }: PageProps<{ pack
             </div>
 
             {/* Body */}
-            <div className="bg-[#071510]">
+            <div className="bg-white">
                 <div className="max-w-6xl mx-auto px-6 md:px-10 py-14 grid grid-cols-1 lg:grid-cols-3 gap-12">
                     {/* Main */}
                     <div className="lg:col-span-2 space-y-10">
                         <div>
-                            <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                            <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                                 <span className="w-1 h-5 bg-[#d4a853] rounded-full inline-block" />
                                 Package Overview
                             </h2>
-                            <p className="text-white/70 leading-relaxed text-[15px]">{pkg.description}</p>
+                            <p className="text-gray-600 leading-relaxed text-[15px]">{pkg.description}</p>
                         </div>
 
                         {pkg.features.length > 0 && (
                             <div>
-                                <h2 className="text-lg font-semibold text-white mb-5 flex items-center gap-2">
+                                <h2 className="text-lg font-semibold text-gray-900 mb-5 flex items-center gap-2">
                                     <span className="w-1 h-5 bg-[#d4a853] rounded-full inline-block" />
                                     What's Included
                                 </h2>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                     {pkg.features.map((f, i) => (
-                                        <div key={i} className="flex items-start gap-3 bg-white/3 border border-white/8 rounded-xl p-4">
+                                        <div key={i} className="flex items-start gap-3 bg-white/3 border border-gray-200 rounded-xl p-4">
                                             <div className="w-5 h-5 rounded-full bg-[#d4a853]/15 flex items-center justify-center flex-shrink-0 mt-0.5">
                                                 <svg className="w-3 h-3 text-[#d4a853]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                                                 </svg>
                                             </div>
-                                            <span className="text-white/80 text-sm leading-snug">{f}</span>
+                                            <span className="text-gray-700 text-sm leading-snug">{f}</span>
                                         </div>
                                     ))}
                                 </div>
                             </div>
                         )}
 
-                        <div className="bg-white/3 border border-white/8 rounded-2xl p-6">
+                        <div className="bg-white/3 border border-gray-200 rounded-2xl p-6">
                             <div className="flex items-start gap-4">
                                 <div className="w-10 h-10 rounded-xl bg-[#d4a853]/10 flex items-center justify-center flex-shrink-0">
                                     <svg className="w-5 h-5 text-[#d4a853]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -369,8 +369,8 @@ export default function PackageDetail({ package: pkg, others }: PageProps<{ pack
                                     </svg>
                                 </div>
                                 <div>
-                                    <p className="text-white font-medium text-sm mb-1">Custom Itinerary Available</p>
-                                    <p className="text-white/50 text-sm leading-relaxed">
+                                    <p className="text-gray-900 font-medium text-sm mb-1">Custom Itinerary Available</p>
+                                    <p className="text-gray-600 text-sm leading-relaxed">
                                         We tailor every stay to your group's interests. Mention your preferred dates, dietary needs, and special requests when you book — we'll craft the perfect experience.
                                     </p>
                                 </div>
@@ -378,11 +378,11 @@ export default function PackageDetail({ package: pkg, others }: PageProps<{ pack
                         </div>
 
                         <div>
-                            <h2 className="text-lg font-semibold text-white mb-5 flex items-center gap-2">
+                            <h2 className="text-lg font-semibold text-gray-900 mb-5 flex items-center gap-2">
                                 <span className="w-1 h-5 bg-[#d4a853] rounded-full inline-block" />
                                 Location & Transport
                             </h2>
-                            <div className="overflow-hidden rounded-2xl border border-white/8 bg-[#0d1f13] mb-5">
+                            <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white mb-5">
                                 <iframe
                                     title="Jipe Farm Campsite location"
                                     src="https://maps.google.com/maps?q=-3.598951,37.699760&z=15&output=embed"
@@ -391,27 +391,27 @@ export default function PackageDetail({ package: pkg, others }: PageProps<{ pack
                                     referrerPolicy="no-referrer-when-downgrade"
                                 />
                             </div>
-                            <p className="text-white/55 text-sm leading-relaxed mb-5">
+                            <p className="text-gray-500 text-sm leading-relaxed mb-5">
                                 If you decide to come individually, the location of the camp is here: <a href="https://maps.app.goo.gl/LNkSLU85HYBx9KRg9" target="_blank" rel="noreferrer" className="text-[#d4a853] hover:text-[#c49640]">open Jipe Farm Campsite on Google Maps</a>. Total distance is 51km.
                             </p>
                             <div className="grid sm:grid-cols-2 gap-4">
-                                <div className="bg-white/3 border border-white/8 rounded-2xl p-5">
-                                    <h3 className="text-white font-semibold text-sm mb-4">Public Transportation</h3>
+                                <div className="bg-white/3 border border-gray-200 rounded-2xl p-5">
+                                    <h3 className="text-gray-900 font-semibold text-sm mb-4">Public Transportation</h3>
                                     <div className="space-y-3">
                                         {publicTransport.map(item => (
-                                            <div key={item.route} className="flex items-start justify-between gap-3 border-b border-white/5 pb-3 last:border-0 last:pb-0">
-                                                <span className="text-white/55 text-sm leading-snug">{item.route}</span>
+                                            <div key={item.route} className="flex items-start justify-between gap-3 border-b border-gray-100 pb-3 last:border-0 last:pb-0">
+                                                <span className="text-gray-500 text-sm leading-snug">{item.route}</span>
                                                 <span className="text-[#d4a853] text-sm font-bold whitespace-nowrap">{item.cost}</span>
                                             </div>
                                         ))}
                                     </div>
                                 </div>
-                                <div className="bg-white/3 border border-white/8 rounded-2xl p-5">
-                                    <h3 className="text-white font-semibold text-sm mb-4">Bolt Estimates</h3>
+                                <div className="bg-white/3 border border-gray-200 rounded-2xl p-5">
+                                    <h3 className="text-gray-900 font-semibold text-sm mb-4">Bolt Estimates</h3>
                                     <div className="space-y-3">
                                         {boltOptions.map(item => (
-                                            <div key={item.type} className="flex items-start justify-between gap-3 border-b border-white/5 pb-3 last:border-0 last:pb-0">
-                                                <span className="text-white/55 text-sm leading-snug">{item.type}</span>
+                                            <div key={item.type} className="flex items-start justify-between gap-3 border-b border-gray-100 pb-3 last:border-0 last:pb-0">
+                                                <span className="text-gray-500 text-sm leading-snug">{item.type}</span>
                                                 <span className="text-[#d4a853] text-sm font-bold whitespace-nowrap">{item.cost}</span>
                                             </div>
                                         ))}
@@ -423,17 +423,17 @@ export default function PackageDetail({ package: pkg, others }: PageProps<{ pack
 
                     {/* Sidebar */}
                     <div className="space-y-5">
-                        <div className={`rounded-2xl p-6 border ${pkg.is_featured ? 'bg-gradient-to-br from-[#d4a853]/15 to-[#d4a853]/5 border-[#d4a853]/30' : 'bg-white/3 border-white/8'}`}>
+                        <div className={`rounded-2xl p-6 border ${pkg.is_featured ? 'bg-gradient-to-br from-[#d4a853]/15 to-[#d4a853]/5 border-[#d4a853]/30' : 'bg-white/3 border-gray-200'}`}>
                             {pkg.is_featured && (
                                 <p className="text-[#d4a853] text-xs font-bold uppercase tracking-widest mb-3">Most Popular</p>
                             )}
                             <div className="mb-1">
-                                <span className="text-4xl font-bold text-white">{pkg.price}</span>
+                                <span className="text-4xl font-bold text-gray-900">{pkg.price}</span>
                             </div>
                             {pkg.price_note && (
-                                <p className="text-white/40 text-sm mb-1">{pkg.price_note}</p>
+                                <p className="text-gray-500 text-sm mb-1">{pkg.price_note}</p>
                             )}
-                            <p className="text-white/50 text-xs flex items-center gap-1.5 mb-5">
+                            <p className="text-gray-600 text-xs flex items-center gap-1.5 mb-5">
                                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                 </svg>
@@ -445,22 +445,22 @@ export default function PackageDetail({ package: pkg, others }: PageProps<{ pack
                             >
                                 Book This Package
                             </button>
-                            <p className="text-center text-white/30 text-xs mt-3">No payment required to enquire</p>
+                            <p className="text-center text-gray-400 text-xs mt-3">No payment required to enquire</p>
                         </div>
 
-                        <div className="bg-white/3 border border-white/8 rounded-2xl p-5">
-                            <h3 className="text-white/50 text-xs uppercase tracking-wider mb-3">Location</h3>
-                            <p className="text-white text-sm font-medium">Jipe Farm Campsite</p>
-                            <p className="text-white/50 text-xs mt-1">Lake Jipe, Kilimanjaro, Tanzania</p>
-                            <p className="text-white/30 text-xs mt-0.5">3°36′S 37°45′E</p>
+                        <div className="bg-white/3 border border-gray-200 rounded-2xl p-5">
+                            <h3 className="text-gray-600 text-xs uppercase tracking-wider mb-3">Location</h3>
+                            <p className="text-gray-900 text-sm font-medium">Jipe Farm Campsite</p>
+                            <p className="text-gray-600 text-xs mt-1">Lake Jipe, Kilimanjaro, Tanzania</p>
+                            <p className="text-gray-400 text-xs mt-0.5">3°36′S 37°45′E</p>
                         </div>
 
-                        <div className="bg-white/3 border border-white/8 rounded-2xl p-5">
-                            <h3 className="text-white/50 text-xs uppercase tracking-wider mb-4">Call Us</h3>
+                        <div className="bg-white/3 border border-gray-200 rounded-2xl p-5">
+                            <h3 className="text-gray-600 text-xs uppercase tracking-wider mb-4">Call Us</h3>
                             <div className="space-y-3">
                                 {phoneContacts.map(contact => (
-                                    <a key={contact.phone} href={`tel:${contact.phone}`} className="flex items-center justify-between gap-3 border-b border-white/5 pb-3 last:border-0 last:pb-0 group">
-                                        <span className="text-white/65 text-sm group-hover:text-white transition-colors">{contact.name}</span>
+                                    <a key={contact.phone} href={`tel:${contact.phone}`} className="flex items-center justify-between gap-3 border-b border-gray-100 pb-3 last:border-0 last:pb-0 group">
+                                        <span className="text-gray-600 text-sm group-hover:text-gray-900 transition-colors">{contact.name}</span>
                                         <span className="text-[#d4a853] text-sm font-semibold whitespace-nowrap">{contact.phone}</span>
                                     </a>
                                 ))}
@@ -471,12 +471,12 @@ export default function PackageDetail({ package: pkg, others }: PageProps<{ pack
 
                 {/* Other packages */}
                 {others.length > 0 && (
-                    <div className="border-t border-white/5 py-14">
+                    <div className="border-t border-gray-100 py-14">
                         <div className="max-w-6xl mx-auto px-6 md:px-10">
-                            <h2 className="text-xl font-bold text-white mb-8">Other Packages</h2>
+                            <h2 className="text-xl font-bold text-gray-900 mb-8">Other Packages</h2>
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {others.map(p => (
-                                    <Link key={p.id} href={`/packages/${p.id}`} className="group block bg-white/3 border border-white/8 hover:border-[#d4a853]/30 rounded-2xl overflow-hidden transition-all">
+                                    <Link key={p.id} href={`/packages/${p.id}`} className="group block bg-white/3 border border-gray-200 hover:border-[#d4a853]/30 rounded-2xl overflow-hidden transition-all">
                                         <div className="h-44 overflow-hidden bg-[#0d2218] relative">
                                             {p.image_url && (
                                                 <img src={p.image_url} alt={p.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -488,9 +488,9 @@ export default function PackageDetail({ package: pkg, others }: PageProps<{ pack
                                             )}
                                         </div>
                                         <div className="p-4">
-                                            <h3 className="text-white font-semibold text-sm mb-1">{p.name}</h3>
+                                            <h3 className="text-gray-900 font-semibold text-sm mb-1">{p.name}</h3>
                                             <div className="flex items-center justify-between">
-                                                <span className="text-white/40 text-xs">{p.duration}</span>
+                                                <span className="text-gray-500 text-xs">{p.duration}</span>
                                                 <span className="text-[#d4a853] font-bold text-sm">{p.price}</span>
                                             </div>
                                         </div>
@@ -502,7 +502,7 @@ export default function PackageDetail({ package: pkg, others }: PageProps<{ pack
                 )}
 
                 <div className="pb-14 text-center">
-                    <Link href="/packages" className="inline-flex items-center gap-2 text-white/40 hover:text-[#d4a853] text-sm transition-colors">
+                    <Link href="/packages" className="inline-flex items-center gap-2 text-gray-500 hover:text-[#d4a853] text-sm transition-colors">
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                         </svg>

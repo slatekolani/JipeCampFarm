@@ -11,26 +11,26 @@ export default function BookingShow({ booking }: PageProps<{ booking: ContactMes
         <AdminLayout title="Booking Detail">
             <Head title="Booking — Admin"/>
             <div className="mb-6 flex items-center gap-3">
-                <Link href="/admin/bookings" className="text-white/40 hover:text-white text-sm transition-colors">
+                <Link href="/admin/bookings" className="text-gray-500 hover:text-white text-sm transition-colors">
                     ← Bookings
                 </Link>
             </div>
 
-            <div className="bg-[#071510] border border-white/8 rounded-2xl p-7 max-w-2xl">
+            <div className="bg-white border border-gray-200 rounded-2xl p-7 max-w-2xl">
                 <div className="flex items-start justify-between gap-4 mb-6">
                     <div>
                         <h1 className="text-white font-bold text-xl">{booking.name}</h1>
-                        <p className="text-white/45 text-sm mt-1">{booking.email}{booking.phone ? ` · ${booking.phone}` : ''}</p>
+                        <p className="text-gray-500 text-sm mt-1">{booking.email}{booking.phone ? ` · ${booking.phone}` : ''}</p>
                     </div>
-                    <p className="text-white/30 text-xs shrink-0">{new Date(booking.created_at).toLocaleString()}</p>
+                    <p className="text-gray-400 text-xs shrink-0">{new Date(booking.created_at).toLocaleString()}</p>
                 </div>
 
                 {booking.subject && (
                     <p className="text-[#d4a853] font-semibold text-sm mb-4">{booking.subject}</p>
                 )}
 
-                <div className="bg-white/3 border border-white/8 rounded-xl p-5">
-                    <p className="text-white/70 text-sm whitespace-pre-line leading-relaxed">{booking.message}</p>
+                <div className="bg-white/3 border border-gray-200 rounded-xl p-5">
+                    <p className="text-gray-600 text-sm whitespace-pre-line leading-relaxed">{booking.message}</p>
                 </div>
 
                 <div className="flex gap-3 mt-6">
@@ -43,7 +43,7 @@ export default function BookingShow({ booking }: PageProps<{ booking: ContactMes
                     {booking.phone && (
                         <a
                             href={`tel:${booking.phone}`}
-                            className="border border-white/15 text-white/70 hover:text-white hover:border-white/30 font-medium text-sm px-5 py-2.5 rounded-full transition-all"
+                            className="border border-gray-300 text-gray-600 hover:text-white hover:border-white/30 font-medium text-sm px-5 py-2.5 rounded-full transition-all"
                         >
                             Call
                         </a>

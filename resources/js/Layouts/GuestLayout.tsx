@@ -15,7 +15,7 @@ const panelImage = activityImages[Math.floor(Date.now() / 60000) % activityImage
 
 export default function GuestLayout({ children }: PropsWithChildren) {
     return (
-        <div className="min-h-screen flex bg-[#040e08]">
+        <div className="min-h-screen flex bg-white">
             <style>{`::-webkit-scrollbar{display:none}`}</style>
 
             {/* ── Left: activity image panel ─────────────────────────── */}
@@ -25,7 +25,7 @@ export default function GuestLayout({ children }: PropsWithChildren) {
                     alt={panelImage.label}
                     className="absolute inset-0 w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-br from-[#040e08]/70 via-[#071510]/40 to-[#040e08]/20" />
+                <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/25 to-transparent" />
 
                 <div className="relative z-10 flex flex-col justify-between p-10 w-full">
                     {/* Logo */}
@@ -65,15 +65,15 @@ export default function GuestLayout({ children }: PropsWithChildren) {
                     <Link href="/" className="flex items-center gap-3 mb-10 lg:hidden">
                         <BrandLogo className="h-16 w-16 shrink-0" />
                         <div>
-                            <p className="text-white font-bold text-lg leading-none">Jipe Farm Campsite</p>
+                            <p className="text-gray-900 font-bold text-lg leading-none">Jipe Farm Campsite</p>
                             <p className="text-[#f1ce47] text-[10px] tracking-[0.2em] uppercase mt-1">Tanzania</p>
                         </div>
                     </Link>
 
                     {children}
 
-                    <div className="mt-8 pt-6 border-t border-white/8 text-center">
-                        <Link href="/" className="text-white/35 hover:text-white/60 text-xs transition-colors">
+                    <div className="mt-8 pt-6 border-t border-gray-200 text-center">
+                        <Link href="/" className="text-gray-400 hover:text-gray-600 text-xs transition-colors">
                             ← Return to public website
                         </Link>
                     </div>
