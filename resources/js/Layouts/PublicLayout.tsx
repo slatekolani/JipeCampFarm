@@ -292,9 +292,10 @@ export default function PublicLayout({ children, transparent = true }: { childre
     useEffect(() => {
         if (!transparent) return;
         const update = () => {
-            const hero = document.querySelector('main')?.firstElementChild as HTMLElement | null;
+            // Skip <style>/<script> tags — find first visible block element
+            const hero = document.querySelector('main > section, main > div, main > header') as HTMLElement | null;
             if (!hero) { setScrolled(window.scrollY > 80); return; }
-            // Navbar is ~80px tall — go dark when the hero's bottom edge reaches the navbar
+            // Go dark the moment the hero's bottom edge scrolls above the navbar (~80px)
             setScrolled(hero.getBoundingClientRect().bottom < 80);
         };
         update();
